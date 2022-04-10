@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECommerce - Shopping Cart</title>
+  <!--Linking to CSS file-->
+  <link rel ="stylesheet" href="style.css">
+  <!--Linking to CDN for the Remove Icon (Trashcan Icon)-->
+  <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <img src="/assets/ECommerce Logo.png">
+    <h1>SHOPPING CART</h1>
+    <div class="cart">
+      <div class="item">
+        <div class="content">
+          <img src="assets/White Nike Socks.jpg" alt="White Nike Socks" width = "200" height="200">
+          <div class="information">
+            <h2 class="name">White Nike Socks</h2>
+            <h3 class="cost">$25.00</h3>
+            <p class="quantity">Quantity: <input value="2"></p>
+            <p class="remove-button">
+              <i class="fa-solid fa-trash"></i>
+              <span class="remove">Remove</span>
+            </p>
+          </div>
+        </div>
+        <div class="content">
+          <img src="assets/Running shoes.jpg" alt="Running shoes" width = "200" height="200">
+          <div class="information">
+            <h2 class="name">Running Shoes</h2>
+            <h3 class="cost">$65.00</h3>
+            <p class="quantity">Quantity: <input value="1"></p>
+            <p class="remove-button">
+              <i class="fa-solid fa-trash"></i>
+              <span class="remove">Remove</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--Total Amount Display-->
+      <div class="right-sidebar">
+        <p>
+          <span>Subtotal</span><span> $115.00</span>
+        </p>
+        <p>
+          <span>Discount</span><span> $5.00</span>
+        </p>
+        <p>
+          <span>Shipping</span><span> $10.00</span>
+        </p>
+        <p>
+          <span>Taxes</span><span> $5.00</span>
+        </p>
+        <hr>
+        <p>
+          <span>Total</span><span> $125.00</span>
+        </p>
+        <a href="#"> Checkout </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
