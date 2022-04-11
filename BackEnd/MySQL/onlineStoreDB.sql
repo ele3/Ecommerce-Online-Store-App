@@ -1,4 +1,3 @@
-
 use kauman;
 
 drop table if exists CartProduct;
