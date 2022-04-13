@@ -1,3 +1,4 @@
+
 use kauman;
 
 drop table if exists CartProduct;
@@ -92,6 +93,8 @@ create table CartProduct(
 	cartProductId int not null primary key auto_increment,
 	cartId int not null,
 	productId int not null,
+    quantity int,
 	foreign key (cartId) references Cart(cartId),
-	foreign key (productId) references Product(productId)
+	foreign key (productId) references Product(productId),
+    constraint uniquePair unique index(cartId,productId)
 );
