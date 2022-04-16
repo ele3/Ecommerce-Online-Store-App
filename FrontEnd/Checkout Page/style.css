@@ -10,18 +10,19 @@
 
 .page-title {
   text-align: center;
-  margin-top: 10px auto;
-  margin-bottom: 10px auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 body {
   background: #DDFFF7;
-  max-width: 1440px;
+  max-width: 1350px;
   margin: auto;
   display: flex;
   flex-direction: column;
+    overflow: scroll;
 }
 
 .item-flex {
@@ -40,7 +41,7 @@ body {
   color:  hsl(0, 0%, 25%);
   margin-bottom: 30px;
   font-size: 24px;
-  font-weight: 500px;
+  font-weight: 700;
 }
 
 .payment-form { 
@@ -62,7 +63,7 @@ body {
 .payment-form input {
   padding: 10px 20px;
   font-size: 18px;
-  font-weight: 750px;
+  font-weight: 400;
 }
 
 .cardholder-name { 
@@ -108,7 +109,7 @@ body {
 
 .btn-pay {
   background: hsl(247, 98%, 22%);
-  font-weight: 750px;
+  font-weight: 800;
   color: hsl(0, 0%, 100%);
   padding: 15px 50px;
 }
@@ -164,6 +165,6 @@ body {
 
 .amount .total {
   font-size: 20px;
-  font-weight: 900px;
+  font-weight: 900;
   color: hsl(0, 0%, 0%);
 }
