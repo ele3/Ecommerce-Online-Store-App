@@ -33,6 +33,14 @@ create table Address(
 	foreign key (countryId) references Country(countryId)
 ); 
 
+-- a user may have multiple cards
+create table Card (
+	cardId int not null primary key auto_increment,
+    cardNumber varchar(30) not null,
+    cardExpiration varchar(30) not null,
+    cardCCV varchar(4) not null
+);
+
 create table User(
 	userId int not null primary key auto_increment,
 	userName varchar(255) not null,
@@ -40,8 +48,10 @@ create table User(
 	firstName varchar(255) not null,
 	lastName varchar(255),
 	userPhoneNumber varchar(20),
+    adminId varchar(10),-- this takes care of the "admin" table
 	addressId int not null,
-	foreign key (addressId) references Address(addressId)
+	foreign key (addressId) references Address(addressId),
+    foreign key (cardId) references Card(cardId)
 );
 
 create table Email(
@@ -88,7 +98,8 @@ create table Product (
     foreign key (categoryId) references Category(categoryId), 
     foreign key (cartId) references Cart(cartId)
 );
-
+-- a ceckout is created from CartProduct whenever a user moves to the checkout page
+-- and is deleted apon leaving the page.
 create table CartProduct(
 	cartProductId int not null primary key auto_increment,
 	cartId int not null,
