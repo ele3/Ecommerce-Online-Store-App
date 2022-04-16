@@ -1,6 +1,4 @@
 
-use kauman;
-
 drop table if exists CartProduct;
 drop table if exists Product;
 drop table if exists Cart;
@@ -8,6 +6,7 @@ drop table if exists Category;
 drop table if exists Manufacturer;
 drop table if exists Email;
 drop table if exists User;
+drop table if exists Card;
 drop table if exists Address;
 drop table if exists Country;
 drop table if exists State;
@@ -34,7 +33,7 @@ create table Address(
 ); 
 
 -- a user may have multiple cards
-create table Card (
+create table Card(
 	cardId int not null primary key auto_increment,
     cardNumber varchar(30) not null,
     cardExpiration varchar(30) not null,
@@ -50,6 +49,7 @@ create table User(
 	userPhoneNumber varchar(20),
     adminId varchar(10),-- this takes care of the "admin" table
 	addressId int not null,
+    cardId int,
 	foreign key (addressId) references Address(addressId),
     foreign key (cardId) references Card(cardId)
 );
@@ -94,7 +94,7 @@ create table Product (
     productPrice double,
     categoryId int not null,
     cartId int not null,
-	foreign key (manufacturerId) references Manufacturer(manufacturerId),
+    foreign key (manufacturerId) references Manufacturer(manufacturerId),
     foreign key (categoryId) references Category(categoryId), 
     foreign key (cartId) references Cart(cartId)
 );
@@ -104,8 +104,8 @@ create table CartProduct(
 	cartProductId int not null primary key auto_increment,
 	cartId int not null,
 	productId int not null,
-    quantity int,
+	quantity int,
 	foreign key (cartId) references Cart(cartId),
 	foreign key (productId) references Product(productId),
-    constraint uniquePair unique index(cartId,productId)
+	constraint uniquePair unique index(cartId,productId)
 );
