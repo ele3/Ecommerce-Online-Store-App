@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - ECommerce</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ECommerce.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -23,7 +22,29 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Mainpage">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Crocs">Crocs</a>
+                        </li>
+                        <li class ="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Yeezys">Yeezys</a>
+                        </li>
+                        <li class ="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Jordans">Jordans</a>
+                        </li>
+                        <li class ="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Accessories">Accessories</a>
+                        </li>
+                    </ul>
+                </div>
+                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 float-right margin">
+                         <li class ="nav-item">
+                            <input type="text" name="search-bar">
+                        </li>
+                        <li class ="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        <li class ="nav-item">
+                            <a class="nav-link text-dark float-right" asp-area="" asp-controller="Home" asp-action="Cart">Cart</a>
                         </li>
                     </ul>
                 </div>
