@@ -57,9 +57,9 @@ body {
 }
 
 .remove-button {
-	position: absolute;
+    position: absolute;
 	bottom: 20px;
-	right: -475px;
+	right: -425px;
 	padding: 15px 30px;
 	background-color: rgb(224, 27, 27);
     box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
