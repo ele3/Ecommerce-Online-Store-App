@@ -11,39 +11,40 @@
 body {
   background: url(https://eskipaper.com/images/blurry-background-1.jpg) no-repeat;
   background-size: cover;
+  overflow: scroll;
 }
 
-.login-form {
-  width: 350px;
-  top: 50%;
+.register-form {
+  width: 250px;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   color: #fff;
 }
 
-.login-form h1 {
-  font-size: 40px;
+.register-form h1 {
+  font-size: 30px;
   text-align: center;
-  margin: 40px 0;
-}
-
-.login-form p {
-  color: #15876c;
-  font-size: 20px;
   margin: 15px 0;
 }
 
-.login-form input {
+.register-form p {
+  color: #15876c;
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.register-form input {
   font-size: 16px;
   width: 100%;
-  padding: 15px 10px;
+  padding: 5px 10px;
   border: 0;
   outline: none;
   border-radius: 5px;
 }
 
-.login-form button {
+.register-form button {
   font-size: 18px;
   font-weight: bold;
   margin: 20px 0;
@@ -53,7 +54,7 @@ body {
   border: 0;
 }
 
-.login-form button:hover {
+.register-form button:hover {
   background-color:hsl(214, 78%, 82%);
   color: black;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
@@ -62,17 +63,17 @@ body {
   cursor: pointer;
 }
 
-.login-form button:active { 
+.register-form button:active { 
   transform: scale(0.95); 
   transition: all .25s ease;
 }
 
-.login-form button:focus {
+.register-form button:focus {
   color: hsl(0, 0%, 100%);
   background: hsl(0, 0%, 0%);
   outline: 4px solid hsl(202, 100%, 75%);
 }
 
-.goto-register {
-    padding-left: 20px;
+.login-return {
+  padding-left: 20px;
 }
