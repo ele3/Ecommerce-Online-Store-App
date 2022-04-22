@@ -28,3 +28,8 @@ body {
 .margin {
     margin-left: 750px;
 }
+
+.navbar{
+    background-color: #87ddc9;
+    box-shadow: 0px 2px black;
+}
