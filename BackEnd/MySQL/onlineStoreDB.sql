@@ -109,3 +109,59 @@ create table CartProduct(
 	foreign key (productId) references Product(productId),
 	constraint uniquePair unique index(cartId,productId)
 );
+
+insert into State(state)
+values('Nebraska'),
+('Whyoming'),
+('Edinburgh'),
+('England'),
+('Wales'),
+('New York'),
+('California'),
+('Alabama'),
+('Kansas'),
+('Washington'),
+('Colorado')
+;
+
+insert into Country(country)
+values('UK'),
+('USA'),
+('France'),
+('Germany'),
+('Netherlands'),
+('Italy'), 
+('Ireland'),
+('Scotland')
+;
+
+insert into Address(streetAddress, city, stateId, zip, countryId)
+values('3288 Interdum. Ave','Portofino',8,'8222 GK',2),
+('7414 Mattis St.','Hudson Bay',8,11910,2),
+('1773 Donec Rd.','Saint-Lô',7,25052,2),
+('7258 Dui. Ave','Jennersdorf',7,341791,2),
+('319-5288 Ullamcorper. Av.','Bossire',7,638973,2),
+('412-2699 Urna Av.','Erchie',6,'CD3 3FW',2),
+('Ap #822-5190 Tortor. St.','Pozzuolo del Friuli',2,951521,2),
+('362-7259 Diam Rd.','Lagundo/Algund',9,329171,2),
+('7217 Phasellus St.','Saratov',9,7579,2),
+('6283 Rhoncus. St.','Shenkursk',8,866779,2),
+('7055 Nibh. Street','Quinta de Tilcoco',11,09315-541,2),
+('693-8278 Ultrices Street','Chía',9,450622,2),
+('228-9715 Non Road','Côte Saint-Luc',9,994673,2),
+('573-6764 Scelerisque Street','Nurda??',8,258868,2),
+('2944 Sem Avenue','Grand Falls',11,2192,2),
+('Ap #659-6787 Nec Road','Woodlands County',11,413074,2),
+('6434 Gravida. St.','Bargagli',10,43010,2),
+('7479 Nunc Road','Fortune',11,15398,2)
+;
+
+insert into user(userName, userPassword, firstName, lastName, userPhoneNumber, addressId) 
+values(Tim, 1234, Tim, Baggins, 123-450-6544, 1),
+(bilbo, 1235, bilbo, Baggins, 123-456-7890, 2),
+(Frodo, 1236, Frodo, Baggins, 123-456-6544, 3);
+
+insert into Email(address, personId)
+values('TimmyB@at.com',1),
+('BillyBob@theShire.com',2),
+('Frodo.Baggins@theShire.com',3);
