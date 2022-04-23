@@ -1,6 +1,5 @@
 ﻿using ECommerce.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ECommerceUnitTests
