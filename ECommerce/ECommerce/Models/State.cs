@@ -10,7 +10,7 @@ namespace ECommerce.Models
         }
 
         public int StateId { get; set; }
-        public string State1 { get; set; } = null!;
+        public string State1 { get; set; } 
 
         public virtual ICollection<Address> Addresses { get; set; }
     }
