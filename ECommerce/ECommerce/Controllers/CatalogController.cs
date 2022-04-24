@@ -11,25 +11,41 @@ namespace ECommerce.Controllers
         public IActionResult Crocs(string selectedProduct)
         {
             // Prints out the Primary ID of the Selected Product
-            Console.WriteLine(selectedProduct);
+            if (selectedProduct != null)
+            {
+                int selectedProductId = int.Parse(selectedProduct);
+                Console.WriteLine(selectedProduct);
+            }
             return View();
         }
         public IActionResult Accessories(string selectedProduct)
         {
             // Prints out the Primary ID of the Selected Product
-            Console.WriteLine(selectedProduct);
+            if (selectedProduct != null)
+            {
+                int selectedProductId = int.Parse(selectedProduct);
+                Console.WriteLine(selectedProduct);
+            }
             return View();
         }
         public IActionResult Jordans(string selectedProduct)
         {
             // Prints out the Primary ID of the Selected Product
-            Console.WriteLine(selectedProduct);
+            if (selectedProduct != null)
+            {
+                int selectedProductId = int.Parse(selectedProduct);
+                Console.WriteLine(selectedProduct);
+            }
             return View();
         }
         public IActionResult Yeezys(string selectedProduct)
         {
             // Prints out the Primary ID of the Selected Product
-            Console.WriteLine(selectedProduct);
+            if (selectedProduct != null)
+            {
+                int selectedProductId = int.Parse(selectedProduct);
+                Console.WriteLine(selectedProduct);
+            }
             return View();
         }
 
