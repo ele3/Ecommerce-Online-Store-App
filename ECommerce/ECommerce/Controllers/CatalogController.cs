@@ -4,10 +4,6 @@ namespace ECommerce.Controllers
 {
     public class CatalogController : Controller
     {
-        public IActionResult Catalog()
-        {
-            return View();
-        }
         public IActionResult Crocs(string selectedProduct)
         {
             // Prints out the Primary ID of the Selected Product
