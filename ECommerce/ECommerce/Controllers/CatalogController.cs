@@ -8,5 +8,24 @@ namespace ECommerce.Controllers
         {
             return View();
         }
+        public IActionResult Crocs()
+        {
+            return View();
+        }
+        public IActionResult Accessories()
+        {
+            return View();
+        }
+        public IActionResult Jordans()
+        {
+            return View();
+        }
+        public IActionResult Yeezys()
+        {
+            return View();
+        }
+
+
+
     }
 }
