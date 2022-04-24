@@ -8,20 +8,28 @@ namespace ECommerce.Controllers
         {
             return View();
         }
-        public IActionResult Crocs()
+        public IActionResult Crocs(string selectedProduct)
         {
+            // Prints out the Primary ID of the Selected Product
+            Console.WriteLine(selectedProduct);
             return View();
         }
-        public IActionResult Accessories()
+        public IActionResult Accessories(string selectedProduct)
         {
+            // Prints out the Primary ID of the Selected Product
+            Console.WriteLine(selectedProduct);
             return View();
         }
-        public IActionResult Jordans()
+        public IActionResult Jordans(string selectedProduct)
         {
+            // Prints out the Primary ID of the Selected Product
+            Console.WriteLine(selectedProduct);
             return View();
         }
-        public IActionResult Yeezys()
+        public IActionResult Yeezys(string selectedProduct)
         {
+            // Prints out the Primary ID of the Selected Product
+            Console.WriteLine(selectedProduct);
             return View();
         }
 
