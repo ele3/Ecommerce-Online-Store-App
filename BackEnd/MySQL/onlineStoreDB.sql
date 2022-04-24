@@ -1,3 +1,4 @@
+-- use database;
 
 drop table if exists CartProduct;
 drop table if exists Product;
@@ -156,12 +157,12 @@ values('3288 Interdum. Ave','Portofino',8,'8222 GK',2),
 ('7479 Nunc Road','Fortune',11,15398,2)
 ;
 
-insert into user(userName, userPassword, firstName, lastName, userPhoneNumber, addressId) 
-values(Tim, 1234, Tim, Baggins, 123-450-6544, 1),
-(bilbo, 1235, bilbo, Baggins, 123-456-7890, 2),
-(Frodo, 1236, Frodo, Baggins, 123-456-6544, 3);
+insert into User(userName, userPassword, firstName, lastName, userPhoneNumber, addressId) 
+values('Tim', 1234, 'Tim', 'Baggins', 123-450-6544, 1),
+('bilbo', 1235, 'bilbo', 'Baggins', 123-456-7890, 2),
+('Frodo', 1236, 'Frodo', 'Baggins', 123-456-6544, 3);
 
-insert into Email(address, personId)
+insert into Email(address, userId)
 values('TimmyB@at.com',1),
 ('BillyBob@theShire.com',2),
 ('Frodo.Baggins@theShire.com',3);
