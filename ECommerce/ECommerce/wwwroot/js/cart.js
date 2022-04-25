@@ -1,4 +1,5 @@
 ﻿
+
 // if(document.readyState == 'loading'){
 //     document.addEventListener('DOMContentLoaded',ready)
 // } else {
@@ -57,9 +58,13 @@ function updateCartTotal() {
         total = total += (price * quantity);
 
     }
-    // console.log("TOTAL:");
-    // console.log(total);
-    document.getElementsByClassName("subTotal")[0].innerText = '$' + total;
-    document.getElementsByClassName("cartTotal")[0].innerText = '$' + (total + 20.00);
+    document.getElementsByClassName("subTotal")[0].innerText = '$' + roundTwoDec(total);
+    document.getElementsByClassName("cartTotal")[0].innerText = '$' + roundTwoDec(total + 20);
 
+}
+
+
+function roundTwoDec(value) {
+    value = (Math.round(value * 100) / 100).toFixed(2);
+    return value;
 }
