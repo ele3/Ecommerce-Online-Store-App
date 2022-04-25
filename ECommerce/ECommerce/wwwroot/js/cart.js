@@ -21,6 +21,7 @@ for (var i = 0; i < quantityInputs.length; i++) {
     input.addEventListener('change', quantityChanged);
 
 }
+
 ////////////////////////////////////////////
 
 
