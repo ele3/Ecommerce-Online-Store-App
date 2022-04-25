@@ -5,19 +5,24 @@
 //     ready();
 // }
 
-
+////////////////////////////////////////////
 // this function remove item from cart
 var removeCartItemButtons = document.getElementsByClassName("remove-button");
-console.log(removeCartItemButtons);
+//console.log(removeCartItemButtons);
 for (var i = 0; i < removeCartItemButtons.length; i++) {
     var button = removeCartItemButtons[i];
-    button.addEventListener('click', function (event) {
-        var buttonClicked = event.target;
-        buttonClicked.parentElement.parentElement.remove();
-        updateCartTotal();
+    button.addEventListener('click', removeCartItem);
 
-    })
 }
+//this function checks the quantity and update the cart 
+var quantityInputs = document.getElementsByClassName("quantity-input");
+for (var i = 0; i < quantityInputs.length; i++) {
+    var input = quantityInputs[i];
+    input.addEventListener('change', quantityChanged);
+
+}
+
+////////////////////////////////////////////
 
 
 function removeCartItem(event) {
@@ -25,6 +30,15 @@ function removeCartItem(event) {
     buttonClicked.parentElement.parentElement.remove();
     updateCartTotal();
 
+}
+
+
+function quantityChanged(event) {
+    var input = event.target;
+    if ((isNaN(input.value) || input.value <= 0)) {
+        input.value = 1;
+    }
+    updateCartTotal();
 }
 
 
