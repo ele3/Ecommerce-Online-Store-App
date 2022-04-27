@@ -1,6 +1,8 @@
-﻿using ECommerce.Data;
+﻿using System.Net;
+using ECommerce.Data;
 using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ECommerce.Controllers
 {
@@ -10,6 +12,20 @@ namespace ECommerce.Controllers
 
         public IActionResult Login(string user, string password)
         {
+            if (user != null && password != null)
+            {
+                User userObject = CheckUser(user, password);
+                if (userObject != null)
+                {
+                    HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(userObject));
+
+                    // This here below is how you call the Session Object
+                    User testUser = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                    Console.WriteLine(testUser.UserId);
+                    Console.WriteLine(testUser.UserName);
+                    Console.WriteLine(testUser.UserPassword);
+                }
+            }
             //Code below is printing the inputs into console
             Console.WriteLine(user);
             Console.WriteLine(password);
@@ -46,5 +62,18 @@ namespace ECommerce.Controllers
             return View();
         }
 
+
+        public User CheckUser(string user, string password)
+        {
+            User userObject = db.Users.Where(query => query.UserName.Equals(user) && query.UserPassword.Equals(password)).SingleOrDefault();
+            if (userObject == null)
+            {
+                return null;
+            }
+            else
+            {
+                return userObject;
+            }
+        }
     }
 }
