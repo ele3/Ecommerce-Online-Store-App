@@ -211,15 +211,11 @@ namespace ECommerce.Data
             {
                 entity.ToTable("product");
 
-                entity.HasIndex(e => e.CartId, "cartId");
-
                 entity.HasIndex(e => e.CategoryId, "categoryId");
 
                 entity.HasIndex(e => e.ManufacturerId, "manufacturerId");
 
                 entity.Property(e => e.ProductId).HasColumnName("productId");
-
-                entity.Property(e => e.CartId).HasColumnName("cartId");
 
                 entity.Property(e => e.CategoryId).HasColumnName("categoryId");
 
@@ -242,12 +238,6 @@ namespace ECommerce.Data
                 entity.Property(e => e.ProductWeight).HasColumnName("productWeight");
 
                 entity.Property(e => e.ProductWidth).HasColumnName("productWidth");
-
-                entity.HasOne(d => d.Cart)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CartId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("product_ibfk_3");
 
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Products)

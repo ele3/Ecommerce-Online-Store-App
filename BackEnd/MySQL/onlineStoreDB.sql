@@ -1,4 +1,5 @@
--- use database;
+
+-- use 'your local db name'; 
 
 drop table if exists CartProduct;
 drop table if exists Product;
@@ -84,7 +85,7 @@ create table Cart(
 create table Product (
 	productId int not null primary key auto_increment,
 	productName varchar(255) not null, 
-    -- productImages image,
+    -- productImage image,
     manufacturerId int not null,
     productDesc varchar(255) not null, 
     productLength double,
@@ -94,12 +95,10 @@ create table Product (
     -- productSKU image, 
     productPrice double,
     categoryId int not null,
-    cartId int not null,
     foreign key (manufacturerId) references Manufacturer(manufacturerId),
-    foreign key (categoryId) references Category(categoryId), 
-    foreign key (cartId) references Cart(cartId)
+    foreign key (categoryId) references Category(categoryId)
 );
--- a ceckout is created from CartProduct whenever a user moves to the checkout page
+-- a checkout is created from CartProduct whenever a user moves to the checkout page
 -- and is deleted apon leaving the page.
 create table CartProduct(
 	cartProductId int not null primary key auto_increment,
@@ -113,7 +112,7 @@ create table CartProduct(
 
 insert into State(state)
 values('Nebraska'),
-('Whyoming'),
+('Wyoming'),
 ('Edinburgh'),
 ('England'),
 ('Wales'),
@@ -166,3 +165,35 @@ insert into Email(address, userId)
 values('TimmyB@at.com',1),
 ('BillyBob@theShire.com',2),
 ('Frodo.Baggins@theShire.com',3);
+
+insert into Manufacturer (manufacturerName)
+values ('Crocs, Inc.'),
+('Adidas'),
+('Nike'),
+('Amazon');
+
+insert into Category (categoryName)
+values ('Crocs'),
+('Yeezys'),
+('Jordans'),
+('Accessories');
+
+insert into Product (productName, manufacturerId, productDesc, productLength, productWidth, productWeight, productRating, productPrice, categoryId)
+values ('Aringa Mens Garden Clog',1,'Khaki',11.34,9.61,2.78,4.1,27,1),
+('Classic Women Leopard Print Clog',1,'Leopard Print',11.34,9.61,2.78,4.5,58,1),
+('Crocband II Clog',1,'Ice Blue',11.34,9.61,2.78,3.9,39,1),
+('Offroad Sport Clog',1,'Black',11.34,9.61,2.78,4.2,25,1),
+('Oreo Boost 350 V2',2,'Black, White, and Red',13.5,9.6,2.65,4.7,387,2),
+('Black Boost 350 V2',2,'Black and Red',13.5,9.6,2.65,4.2,288,2),
+('Blue Boost 350 V2',2,'Grey, Light Blue, and Red',13.5,9.6,2.65,4.6,210,2),
+('Orange Boost 350 V2',2,'Grey and Orange',13.5,9.6,2.65,4.1,188,2),
+('Brown Boost 350 V2',2,'Earth Brown',13.5,9.6,2.65,4.9,198,2),
+('Jordan 6 Retro UNC University Blue/White-Black',3,'University Blue, White, and Black',13.25,8.5,2.5,4.7,697,3),
+('Air Jordan 1 Mid Grade School',3,'White and Black',13.25,8.5,2.5,3.8,898,3),
+('Air Jordan 4 Retro - Yellow',3,'Yellow, White, and Black',13.25,8.5,2.5,4.3,399,3),
+('Air Jordan 4 Retro- White',3,'White, Black, and Red',13.25,8.5,2.5,4.1,499,3),
+('Grey Shoes Bag',4,'Black',19.6,12.4,7.5,4.5,38,4),
+('Foot Fitter',4,'Tan',12.5,6,2.4,4.2,42,4),
+('Shoe Laces',4,'White, Black, Grey, and Brown',27,0.5,0.1,4.6,9,4),
+('Lock Laces',4,'Silver and Black',28,0.2,0.3,4.9,15,4),
+('Epoxy Spiked Shoes',4,'Green and Silver',14.8,10,3.2,0.1,88,4);
