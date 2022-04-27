@@ -32,8 +32,8 @@ namespace ECommerce.Controllers
             return View();
         }
 
-        public IActionResult Register(string user, string password, string email,
-            string country, string state, string street, string zip)
+        public IActionResult Register(string firstName, string lastName, string user, string password, 
+            string email, string country, string state, string city, string street, string zip)
         {
             //code below takes values in the DB and prints them to the console
             var mydata = db.States.Select(x => x.State1).ToList();

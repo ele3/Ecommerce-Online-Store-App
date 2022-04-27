@@ -10,13 +10,13 @@
 
 body {
   background: url(https://eskipaper.com/images/blurry-background-1.jpg) no-repeat;
-  background-size: cover;
+  background-size: 2000px;
   overflow: scroll;
 }
 
 .register-form {
   width: 250px;
-  top: 55%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
