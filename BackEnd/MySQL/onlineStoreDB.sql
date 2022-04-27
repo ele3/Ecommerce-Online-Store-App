@@ -197,3 +197,8 @@ values ('Aringa Mens Garden Clog',1,'~/assets/catalog-pics/crocs/crocs1.jpg','Kh
 ('Shoe Laces',4,'~/assets/catalog-pics/accessories/acc3.jpg','White, Black, Grey, and Brown',27,0.5,0.1,4.6,9,4),
 ('Lock Laces',4,'~/assets/catalog-pics/accessories/acc4.jpg','Silver and Black',28,0.2,0.3,4.9,15,4),
 ('Epoxy Spiked Shoes',4,'~/assets/catalog-pics/accessories/acc5.jpg','Green and Silver',14.8,10,3.2,0.1,88,4);
+
+insert into Cart (userId)
+values(1),
+(2),
+(3);
