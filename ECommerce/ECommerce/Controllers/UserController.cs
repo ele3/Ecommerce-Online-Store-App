@@ -26,9 +26,6 @@ namespace ECommerce.Controllers
                     Console.WriteLine(testUser.UserPassword);
                 }
             }
-            //Code below is printing the inputs into console
-            Console.WriteLine(user);
-            Console.WriteLine(password);
             return View();
         }
 
