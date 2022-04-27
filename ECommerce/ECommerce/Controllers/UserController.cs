@@ -24,6 +24,8 @@ namespace ECommerce.Controllers
                     Console.WriteLine(testUser.UserId);
                     Console.WriteLine(testUser.UserName);
                     Console.WriteLine(testUser.UserPassword);
+
+                    return RedirectToAction("MainPage", "Home");
                 }
             }
             return View();
