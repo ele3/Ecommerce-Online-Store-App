@@ -225,6 +225,10 @@ namespace ECommerce.Data
                     .HasMaxLength(255)
                     .HasColumnName("productDesc");
 
+                entity.Property(e => e.ProductImage)
+                    .HasMaxLength(255)
+                    .HasColumnName("productImage");
+
                 entity.Property(e => e.ProductLength).HasColumnName("productLength");
 
                 entity.Property(e => e.ProductName)
