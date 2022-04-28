@@ -11,6 +11,7 @@ namespace ECommerce.Models
 
         public int ProductId { get; set; }
         public string ProductName { get; set; } = null!;
+        public string ProductImage { get; set; } = null!;
         public int ManufacturerId { get; set; }
         public string ProductDesc { get; set; } = null!;
         public double? ProductLength { get; set; }
