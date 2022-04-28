@@ -141,7 +141,7 @@ namespace ECommerce.Controllers
 
         public Cart CheckCart(User userObject)
         {
-            Cart cartObject = db.Carts.Where(query => query.UserId.Equals(userObject.UserId)).SingleOrDefault();
+            Cart cartObject = db.Carts.Where(x => x.UserId.Equals(userObject.UserId)).SingleOrDefault();
             if (cartObject != null)
             {
                 return cartObject;
