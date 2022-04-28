@@ -64,7 +64,7 @@ namespace ECommerce.Controllers
 
         public User CheckUser(string user, string password)
         {
-            User userObject = db.Users.Where(query => query.UserName.Equals(user) && query.UserPassword.Equals(password)).SingleOrDefault();
+            User userObject = db.Users.Where(x => x.UserName.Equals(user) && x.UserPassword.Equals(password)).SingleOrDefault();
             if (userObject == null)
             {
                 return null;
