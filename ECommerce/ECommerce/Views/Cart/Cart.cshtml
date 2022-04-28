@@ -29,7 +29,7 @@
 							<div class="information">
 								<h2 class="name">@Html.DisplayName(product.Product.ProductName)</h2>
 								<h3 class="cost">$@Html.DisplayFor(modelProduct => product.Product.ProductPrice)</h3>
-								<p class="quantity">Quantity: <input value="1"></p>
+								<p class="quantity">Quantity: <input value=@Html.DisplayFor(item => product.Quantity)></p>
 								<p class="remove-button">
 									<i class="fa-solid fa-trash"></i>
 									<span class="remove">Remove</span>
