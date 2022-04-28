@@ -21,7 +21,6 @@ namespace ECommerce.Controllers
             if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Product productObject = CheckProduct(selectedProductId);
                 Cart userCart = CheckCart(userObject);
 
                 // Increments the Quantity if the Cart Product has been found
@@ -36,12 +35,8 @@ namespace ECommerce.Controllers
                 Cartproduct cartProductObject = new Cartproduct();
                 cartProductObject.CartId = userCart.CartId;
                 cartProductObject.ProductId = selectedProductId;
-                cartProductObject.Cart = userCart;
-                cartProductObject.Product = productObject;
                 cartProductObject.Quantity = 1;
                 db.Cartproducts.Add(cartProductObject);
-                userCart.Cartproducts.Add(cartProductObject);
-                db.Update(userCart);
                 db.SaveChanges();
                 return RedirectToAction("Cart", "Cart");
             }
@@ -58,7 +53,6 @@ namespace ECommerce.Controllers
             if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Product productObject = CheckProduct(selectedProductId);
                 Cart userCart = CheckCart(userObject);
 
                 // Increments the Quantity if the Cart Product has been found
@@ -73,12 +67,8 @@ namespace ECommerce.Controllers
                 Cartproduct cartProductObject = new Cartproduct();
                 cartProductObject.CartId = userCart.CartId;
                 cartProductObject.ProductId = selectedProductId;
-                cartProductObject.Cart = userCart;
-                cartProductObject.Product = productObject;
                 cartProductObject.Quantity = 1;
                 db.Cartproducts.Add(cartProductObject);
-                userCart.Cartproducts.Add(cartProductObject);
-                db.Update(userCart);
                 db.SaveChanges();
                 return RedirectToAction("Cart", "Cart");
             }
@@ -95,7 +85,6 @@ namespace ECommerce.Controllers
             if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Product productObject = CheckProduct(selectedProductId);
                 Cart userCart = CheckCart(userObject);
 
                 // Increments the Quantity if the Cart Product has been found
@@ -110,12 +99,8 @@ namespace ECommerce.Controllers
                 Cartproduct cartProductObject = new Cartproduct();
                 cartProductObject.CartId = userCart.CartId;
                 cartProductObject.ProductId = selectedProductId;
-                cartProductObject.Cart = userCart;
-                cartProductObject.Product = productObject;
                 cartProductObject.Quantity = 1;
                 db.Cartproducts.Add(cartProductObject);
-                userCart.Cartproducts.Add(cartProductObject);
-                db.Update(userCart);
                 db.SaveChanges();
                 return RedirectToAction("Cart", "Cart");
             }
@@ -132,7 +117,6 @@ namespace ECommerce.Controllers
             if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Product productObject = CheckProduct(selectedProductId);
                 Cart userCart = CheckCart(userObject);
 
                 // Increments the Quantity if the Cart Product has been found
@@ -147,12 +131,8 @@ namespace ECommerce.Controllers
                 Cartproduct cartProductObject = new Cartproduct();
                 cartProductObject.CartId = userCart.CartId;
                 cartProductObject.ProductId = selectedProductId;
-                cartProductObject.Cart = userCart;
-                cartProductObject.Product = productObject;
                 cartProductObject.Quantity = 1;
                 db.Cartproducts.Add(cartProductObject);
-                userCart.Cartproducts.Add(cartProductObject);
-                db.Update(userCart);
                 db.SaveChanges();
                 return RedirectToAction("Cart", "Cart");
             }
@@ -165,19 +145,6 @@ namespace ECommerce.Controllers
             if (cartObject != null)
             {
                 return cartObject;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public Product CheckProduct(int selectedProductId)
-        {
-            Product productObject = db.Products.Where(query => query.ProductId.Equals(selectedProductId)).SingleOrDefault();
-            if (productObject != null)
-            {
-                return productObject;
             }
             else
             {
