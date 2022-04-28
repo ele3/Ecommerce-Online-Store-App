@@ -1,8 +1,9 @@
 ﻿using System.Net;
 using ECommerce.Data;
-using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.Models;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace ECommerce.Controllers
 {
@@ -11,49 +12,192 @@ namespace ECommerce.Controllers
         private ECommerceContext db = new ECommerceContext();
         public IActionResult Crocs(string selectedProduct)
         {
-            // Prints out the Primary ID of the Selected Product
-            if (selectedProduct != null)
+            User userObject = null;
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+            }
+
+            if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                //queries the db for the product with the selectedProductId and returns a var of product type
-                var product = (from p in db.Products where p.ProductId==selectedProductId select p ).FirstOrDefault();
-                Console.WriteLine(product.ProductName);
-                Console.WriteLine(selectedProduct);
+                Product productObject = CheckProduct(selectedProductId);
+                Cart userCart = CheckCart(userObject);
+
+                // Increments the Quantity if the Cart Product has been found
+                Cartproduct findCartproduct = CheckCartproduct(selectedProductId, userCart);
+                if (findCartproduct != null)
+                {
+                    db.Cartproducts.Find(findCartproduct.CartProductId).Quantity += 1;
+                    db.SaveChanges();
+                    return RedirectToAction("Cart", "Cart");
+                }
+
+                Cartproduct cartProductObject = new Cartproduct();
+                cartProductObject.CartId = userCart.CartId;
+                cartProductObject.ProductId = selectedProductId;
+                cartProductObject.Cart = userCart;
+                cartProductObject.Product = productObject;
+                cartProductObject.Quantity = 1;
+                db.Cartproducts.Add(cartProductObject);
+                userCart.Cartproducts.Add(cartProductObject);
+                db.Update(userCart);
+                db.SaveChanges();
+                return RedirectToAction("Cart", "Cart");
             }
             return View();
         }
         public IActionResult Accessories(string selectedProduct)
         {
-            // Prints out the Primary ID of the Selected Product
-            if (selectedProduct != null)
+            User userObject = null;
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+            }
+
+            if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Console.WriteLine(selectedProduct);
+                Product productObject = CheckProduct(selectedProductId);
+                Cart userCart = CheckCart(userObject);
+
+                // Increments the Quantity if the Cart Product has been found
+                Cartproduct findCartproduct = CheckCartproduct(selectedProductId, userCart);
+                if (findCartproduct != null)
+                {
+                    db.Cartproducts.Find(findCartproduct.CartProductId).Quantity += 1;
+                    db.SaveChanges();
+                    return RedirectToAction("Cart", "Cart");
+                }
+
+                Cartproduct cartProductObject = new Cartproduct();
+                cartProductObject.CartId = userCart.CartId;
+                cartProductObject.ProductId = selectedProductId;
+                cartProductObject.Cart = userCart;
+                cartProductObject.Product = productObject;
+                cartProductObject.Quantity = 1;
+                db.Cartproducts.Add(cartProductObject);
+                userCart.Cartproducts.Add(cartProductObject);
+                db.Update(userCart);
+                db.SaveChanges();
+                return RedirectToAction("Cart", "Cart");
             }
             return View();
         }
         public IActionResult Jordans(string selectedProduct)
         {
-            // Prints out the Primary ID of the Selected Product
-            if (selectedProduct != null)
+            User userObject = null;
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+            }
+
+            if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Console.WriteLine(selectedProduct);
+                Product productObject = CheckProduct(selectedProductId);
+                Cart userCart = CheckCart(userObject);
+
+                // Increments the Quantity if the Cart Product has been found
+                Cartproduct findCartproduct = CheckCartproduct(selectedProductId, userCart);
+                if (findCartproduct != null)
+                {
+                    db.Cartproducts.Find(findCartproduct.CartProductId).Quantity += 1;
+                    db.SaveChanges();
+                    return RedirectToAction("Cart", "Cart");
+                }
+
+                Cartproduct cartProductObject = new Cartproduct();
+                cartProductObject.CartId = userCart.CartId;
+                cartProductObject.ProductId = selectedProductId;
+                cartProductObject.Cart = userCart;
+                cartProductObject.Product = productObject;
+                cartProductObject.Quantity = 1;
+                db.Cartproducts.Add(cartProductObject);
+                userCart.Cartproducts.Add(cartProductObject);
+                db.Update(userCart);
+                db.SaveChanges();
+                return RedirectToAction("Cart", "Cart");
             }
             return View();
         }
         public IActionResult Yeezys(string selectedProduct)
         {
-            // Prints out the Primary ID of the Selected Product
-            if (selectedProduct != null)
+            User userObject = null;
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+            }
+
+            if (selectedProduct != null && userObject != null)
             {
                 int selectedProductId = int.Parse(selectedProduct);
-                Console.WriteLine(selectedProduct);
+                Product productObject = CheckProduct(selectedProductId);
+                Cart userCart = CheckCart(userObject);
+
+                // Increments the Quantity if the Cart Product has been found
+                Cartproduct findCartproduct = CheckCartproduct(selectedProductId, userCart);
+                if (findCartproduct != null)
+                {
+                    db.Cartproducts.Find(findCartproduct.CartProductId).Quantity += 1;
+                    db.SaveChanges();
+                    return RedirectToAction("Cart", "Cart");
+                }
+
+                Cartproduct cartProductObject = new Cartproduct();
+                cartProductObject.CartId = userCart.CartId;
+                cartProductObject.ProductId = selectedProductId;
+                cartProductObject.Cart = userCart;
+                cartProductObject.Product = productObject;
+                cartProductObject.Quantity = 1;
+                db.Cartproducts.Add(cartProductObject);
+                userCart.Cartproducts.Add(cartProductObject);
+                db.Update(userCart);
+                db.SaveChanges();
+                return RedirectToAction("Cart", "Cart");
             }
             return View();
         }
 
+        public Cart CheckCart(User userObject)
+        {
+            Cart cartObject = db.Carts.Where(query => query.UserId.Equals(userObject.UserId)).SingleOrDefault();
+            if (cartObject != null)
+            {
+                return cartObject;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        public Product CheckProduct(int selectedProductId)
+        {
+            Product productObject = db.Products.Where(query => query.ProductId.Equals(selectedProductId)).SingleOrDefault();
+            if (productObject != null)
+            {
+                return productObject;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        public Cartproduct CheckCartproduct(int selectedProductId, Cart userCart)
+        {
+            Cartproduct cartproductObject = db.Cartproducts
+                .Where(x => x.ProductId.Equals(selectedProductId) && x.CartId.Equals(userCart.CartId))
+                .SingleOrDefault();
+            if (cartproductObject != null)
+            {
+                return cartproductObject;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
