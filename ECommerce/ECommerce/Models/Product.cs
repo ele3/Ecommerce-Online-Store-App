@@ -19,9 +19,7 @@ namespace ECommerce.Models
         public double? ProductRating { get; set; }
         public double? ProductPrice { get; set; }
         public int CategoryId { get; set; }
-        public int CartId { get; set; }
 
-        public virtual Cart Cart { get; set; } = null!;
         public virtual Category Category { get; set; } = null!;
         public virtual Manufacturer Manufacturer { get; set; } = null!;
         public virtual ICollection<Cartproduct> Cartproducts { get; set; }

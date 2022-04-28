@@ -1,6 +1,8 @@
-﻿using ECommerce.Data;
+﻿using System.Net;
+using ECommerce.Data;
 using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ECommerce.Controllers
 {
@@ -10,14 +12,27 @@ namespace ECommerce.Controllers
 
         public IActionResult Login(string user, string password)
         {
-            //Code below is printing the inputs into console
-            Console.WriteLine(user);
-            Console.WriteLine(password);
+            if (user != null && password != null)
+            {
+                User userObject = CheckUser(user, password);
+                if (userObject != null)
+                {
+                    HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(userObject));
+
+                    // This here below is how you call the Session Object
+                    User testUser = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                    Console.WriteLine(testUser.UserId);
+                    Console.WriteLine(testUser.UserName);
+                    Console.WriteLine(testUser.UserPassword);
+
+                    return RedirectToAction("MainPage", "Home");
+                }
+            }
             return View();
         }
 
-        public IActionResult Register(string user, string password, string email,
-            string country, string state, string street, string zip)
+        public IActionResult Register(string firstName, string lastName, string user, string password, 
+            string email, string country, string state, string city, string street, string zip)
         {
             //code below takes values in the DB and prints them to the console
             var mydata = db.States.Select(x => x.State1).ToList();
@@ -46,5 +61,18 @@ namespace ECommerce.Controllers
             return View();
         }
 
+
+        public User CheckUser(string user, string password)
+        {
+            User userObject = db.Users.Where(query => query.UserName.Equals(user) && query.UserPassword.Equals(password)).SingleOrDefault();
+            if (userObject == null)
+            {
+                return null;
+            }
+            else
+            {
+                return userObject;
+            }
+        }
     }
 }

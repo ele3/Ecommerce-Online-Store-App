@@ -19,8 +19,9 @@ namespace ECommerceUnitTests
         public void Register_Does_Not_Return_Null()
         {
             UserController testController = new UserController();
-            ViewResult result = testController.Register("Username", "Password",
-                "Email", "Country", "State", "Street", "Zip") as ViewResult;
+            ViewResult result = testController.Register("firstName", "lastName", "Username",
+                "Password", "Email", "Country", "State", "City", 
+                "Street", "Zip") as ViewResult;
             Assert.IsNotNull(result);
         }
     }
