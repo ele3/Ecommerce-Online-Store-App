@@ -34,30 +34,77 @@ namespace ECommerce.Controllers
         public IActionResult Register(string firstName, string lastName, string user, string password, 
             string email, string country, string state, string city, string street, string zip)
         {
-            //code below takes values in the DB and prints them to the console
-            var listOfSatates = db.States.Select(x => x.State1).ToList();
-            foreach (var VARIABLE in listOfSatates)
+
+            var dbState = db.States.Where(x => x.State1 == state).SingleOrDefault();
+            var dbCountry = db.Countries.Where(x => x.Country1 == country).SingleOrDefault();
+            var dbAddress = db.Addresses.Where(x => x.StreetAddress == street).SingleOrDefault();
+            var dbUser = db.Users.Where(x => x.UserName == user).SingleOrDefault();
+
+            if (state != null && dbState ==null)
             {
-                Console.WriteLine(VARIABLE);
-            }
-            //code below adds states to the DB
-            if (state != null)
-            {
-                State state2 = new State
+                State newState = new State
                 {
                     State1 = state
                 };
-                db.States.Add(state2);
+                db.States.Add(newState);
+                db.SaveChanges();
+                dbState = db.States.Where(x => x.State1 == state).SingleOrDefault();
+            }
+
+            if (country !=null && dbCountry == null)
+            {
+                Country newCountry = new Country
+                {
+                    Country1 = country
+                };
+                db.Countries.Add(newCountry);
+                db.SaveChanges();
+                dbCountry = db.Countries.Where(x => x.Country1 == country).SingleOrDefault();
+            }
+
+            if (street != null && city != null && zip != null && dbAddress == null)
+            {
+                Address newAddress = new Address
+                {
+                    StreetAddress = street,
+                    Zip = zip,
+                    City = city,
+                    StateId = dbState.StateId,
+                    CountryId = dbCountry.CountryId
+                };
+                db.Addresses.Add(newAddress);
+                db.SaveChanges();
+                dbAddress = db.Addresses.Where(x => x == newAddress).SingleOrDefault();
+            }
+
+            if (user != null && dbUser == null)
+            {
+                User newUser = new User
+                {
+                    UserName = user,
+                    UserPassword = password,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    UserPhoneNumber = null,
+                    AddressId = dbAddress.AddressId
+                };
+                db.Users.Add(newUser);
+                db.SaveChanges();
+                dbUser = db.Users.Where(x => x == newUser).SingleOrDefault();
+                Cart newCart = new Cart
+                {
+                    UserId = dbUser.UserId
+                };
+                db.Carts.Add(newCart);
+                db.SaveChanges();
+                Email newEmail = new Email
+                {
+                    Address = email,
+                    UserId = dbUser.UserId
+                };
+                db.Emails.Add(newEmail);
                 db.SaveChanges();
             }
-            // Code below is printing the inputs into console
-            Console.WriteLine(user);
-            Console.WriteLine(password);
-            Console.WriteLine(email);
-            Console.WriteLine(country);
-            Console.WriteLine(state);
-            Console.WriteLine(street);
-            Console.WriteLine(zip);
             return View();
         }
 
