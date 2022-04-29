@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Cart
+@{
 	ViewData["Title"] = "Checkout";
 }
 
@@ -47,86 +48,81 @@
             <label for="cvv" class="payment-input-label">CVV</label>
           </div>
           <input type="number" name="cvv" id="cvv" class="payment-input" placeholder = "XXX" min="100" max="999">
-          
-          <button class="btn-pay" type="submit">
-	          <b>Pay</b>
-          </button>
+          <div class="pay-button">
+	          <button class="btn-pay" type="submit">
+		          <b>Pay</b>
+	          </button>
+          </div>
         </form>
       </div>
 
     </section>
 
-      <section class="cart">
-        <div class="right-cart-box">
-          <h2 class="payment-heading">Cart Checkout</h2>
+	  <section class="cart">
+		  @{
+			  double? subtotalAmount = 0;
+			  double? totalAmount = 0;
+		  }
+		  <div class="right-cart-box">
+			  <h2 class="payment-heading">Cart Checkout</h2>
 
-          <div class="product-card">
-            <div class="card">
-              <div class="img-box">
-                <img src="~/assets/White Nike Socks.jpg" alt="White Nike Socks" width="80" class="product-img">
-              </div>
-              <div class="detail">
-                <h4 class="product-name">White Nike Socks</h4>
-                <div class="product-price-info">
-                  <div class="product-quantity">
-                    <span>Quantity: </span><span>2</span>
-                  </div>
-                  <div class="price">
-                    <span>Price: </span><span>$25.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+			  @if (Model != null)
+			  {
+				  @foreach (var product in Model.Cartproducts)
+				  {
+					  subtotalAmount = product.Product.ProductPrice * product.Quantity;
+					  <div class="product-card">
+						  <div class="card">
+							  <div class="img-box">
+								  <img src=@Url.Content(product.Product.ProductImage) alt="Product Image" width="80px" class="product-img">
+							  </div>
+							  <div class="detail">
+								  <h4 class="product-name">@Html.DisplayFor(x => product.Product.ProductName)</h4>
+								  <div class="product-price-info">
+									  <div class="product-quantity">
+										  <span>Quantity: </span><span>@Html.DisplayFor(x => product.Quantity)</span>
+									  </div>
+									  <div class="price">
+										  <span>Price: </span><span>$@Html.DisplayFor(x => product.Product.ProductPrice)</span>
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+				  }
+			  }
 
-          <div class="product-card">
-            <div class="card">
-              <div class="img-box">
-                <img src="~/assets/Running shoes.jpg" alt="Running Shoes" width="80" class="product-img">
-              </div>
-              <div class="detail">
-                <h4 class="product-name">Running Shoes</h4>
-                <div class="product-price-info">
-                  <div class="product-quantity">
-                    <span>Quantity: </span><span>1</span>
-                  </div>
-                  <div class="price">
-                    <span>Price: </span><span>$65.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+		  </div>
+		  <div class="wrapper">
+			  <div class="amount">
+				  @{
+					  totalAmount = subtotalAmount + 10.00;
+				  }
+				  <div class="subtotal">
+					  <span>Subtotal</span> <span>$ <span id="subtotal">@Html.DisplayFor(x => subtotalAmount)</span></span>
+				  </div>
 
-        </div>
-        <div class="wrapper">
-          <div class="amount">
+				  <div class="discount">
+					  <span>Discount</span> <span>$ <span id="discount">5.00</span></span>
+				  </div>
 
-            <div class="subtotal">
-              <span>Subtotal</span> <span>$ <span id="subtotal">115.00</span></span>
-            </div>
+				  <div class="shipping">
+					  <span>Shipping</span> <span>$ <span id="shipping">10.00</span></span>
+				  </div>
 
-            <div class="discount">
-              <span>Discount</span> <span>$ <span id="discount">5.00</span></span>
-            </div>
+				  <div class="tax">
+					  <span>Tax</span> <span>$ <span id="tax">5.00</span></span>
+				  </div>
 
-            <div class="shipping">
-              <span>Shipping</span> <span>$ <span id="shipping">10.00</span></span>
-            </div>
+				  <hr>
 
-            <div class="tax">
-              <span>Tax</span> <span>$ <span id="tax">5.00</span></span>
-            </div>
+				  <div class="total">
+					  <span>Total</span> <span>$ <span id="total">@Html.DisplayFor(x => totalAmount)</span></span>
+				  </div>
 
-            <hr>
-
-            <div class="total">
-              <span>Total</span> <span>$ <span id="total">125.00</span></span>
-            </div>
-
-          </div>
-        </div>
-      </section>
+			  </div>
+		  </div>
+	  </section>
   </div>
 </body>
 </html>
