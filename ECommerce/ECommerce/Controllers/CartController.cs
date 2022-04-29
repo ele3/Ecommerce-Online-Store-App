@@ -31,5 +31,32 @@ namespace ECommerce.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Cartproduct cartProductObject = await db.Cartproducts.FirstOrDefaultAsync(x => x.CartProductId == id);
+            if (cartProductObject == null)
+            {
+                return NotFound();
+            }
+            Product placeholderProduct = db.Products.Find(cartProductObject.ProductId);
+            cartProductObject.Product = placeholderProduct;
+            return View(cartProductObject);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            Console.WriteLine("Entered");
+            Cartproduct cartProductObject = await db.Cartproducts.FindAsync(id);
+            db.Cartproducts.Remove(cartProductObject);
+            await db.SaveChangesAsync();
+            return RedirectToAction(nameof(Cart));
+        }
     }
 }
