@@ -26,7 +26,6 @@ namespace ECommerce.Controllers
                     cartProductObject.Product = placeholderProduct;
                 }
 
-
                 return View(cartObject);
             }
             return View();
