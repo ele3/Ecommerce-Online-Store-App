@@ -21,16 +21,16 @@
       <h2 class="payment-heading">PAYMENT DETAILS</h2>
       <div class="payment-form">
 
-        <form action="#">
-          <div class="cardholder-name">
-            <label for="cardholder-name" class="payment-input-label">Cardholder Name</label>
+        <form action="#" methods="post">
+          <div class="cardholderName">
+            <label for="cardholderName" class="payment-input-label">Cardholder Name</label>
           </div>
-          <input type="text" name="cardholder-name" id="cardholder-name" placeholder = "CARDHOLDER NAME" class="payment-input">
+          <input type="text" name="cardholderName" id="cardholderName" placeholder = "CARDHOLDER NAME" class="payment-input">
 
-          <div class="card-number">
-            <label for="card-number" class="payment-input-label">Card Number</label>
+          <div class="cardNumber">
+            <label for="cardNumber" class="payment-input-label">Card Number</label>
           </div>
-          <input type="text" name="card-number" id="card-number" placeholder = "XXXX-XXXX-XXXX-XXXX" class="payment-input">
+          <input type="text" name="cardNumber" id="cardNumber" placeholder = "XXXX-XXXX-XXXX-XXXX" class="payment-input">
 
           <div class="expiration">
             <label for="expiration" class="payment-input-label">Expiration date</label>
@@ -47,12 +47,12 @@
             <label for="cvv" class="payment-input-label">CVV</label>
           </div>
           <input type="number" name="cvv" id="cvv" class="payment-input" placeholder = "XXX" min="100" max="999">
+          
+          <button class="btn-pay" type="submit">
+	          <b>Pay</b>
+          </button>
         </form>
       </div>
-
-      <button class="btn-pay">
-        <b>Pay</b>
-      </button>
 
     </section>
 
