@@ -14,36 +14,34 @@ a:hover {
   margin-right: 10px;
 }
 
-.logo {
-  margin-left: 20px;
-  margin-top : 20px;
+.main {
+    margin-left: 150px;
+    margin-top: 100px;
 }
 
-.search-bar {
-  margin-right: 60px;
+* {
+    box-sizing: border-box;
 }
 
-img {
-  margin-left: 150px;
-  margin-top: 100px;
+.trending {
+   margin-left :125px;
+   margin-top: 150px;
 }
 
-.nav {
-  margin-top: 50px;
+.shoes {
+    margin-bottom: 200px;
 }
 
-.c1 {
-    margin-left: 10px;
+#spacing {
+    margin-right: 20px;
 }
 
-.c2 {
-    margin-left: 20px;
+.limited {
+    margin-left: 125px;
+    margin-top: 200px;
 }
 
-.c3 {
-    margin-left: 25px;
-}
-
-.c4 {
-    margin-left: 28px;
+.jordan {
+    margin-left: 125px;
+    margin-bottom: 200px;
 }
