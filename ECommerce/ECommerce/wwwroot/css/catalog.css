@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.row::after {
+.row:after {
     content: "";
     clear: both;
     display: table;
