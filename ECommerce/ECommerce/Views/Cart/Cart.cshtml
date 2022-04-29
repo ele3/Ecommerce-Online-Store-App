@@ -34,10 +34,10 @@
 							  <h2 class="name">@Html.DisplayName(product.Product.ProductName)</h2>
 							  <h3 class="cost">$@Html.DisplayFor(modelProduct => product.Product.ProductPrice)</h3>
 							  <p class="quantity">Quantity: <input value=@Html.DisplayFor(item => product.Quantity)></p>
-							  <p class="remove-button">
+							  <a class="remove-button" asp-action="Delete" asp-route-id="@product.CartProductId">
 								  <i class="fa-solid fa-trash"></i>
 								  <span class="remove">Remove</span>
-							  </p>
+							  </a>
 						  </div>
 					  </div>
 					  subtotalAmount +=
@@ -48,7 +48,7 @@
 		  <!--Total Amount Display-->
 		  <div class="right-sidebar">
 			  @{
-				totalAmount = subtotalAmount + 5.00 + 10.00 + 5.00;
+				totalAmount = subtotalAmount + 10.00;
 			  }
 			  <p>
 				  <span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => subtotalAmount)</span>
