@@ -13,22 +13,58 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!--- end of code from Bootstrap C# tab examples --->
 	<link rel="stylesheet" href="~/css/mainpage.css">
+
+	<!--- code from Bootstrap C# Examples: http://csharpexamples.com/bootstrap-examples/ --->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!--- end of code from Bootstrap C# tab examples --->
+	<link rel="stylesheet" href="~/css/catalog.css">
 </head>
+
 <body>
-<!--<img class="logo" src="https://cdn.discordapp.com/attachments/961351822092681276/962798017512087552/ECommerce_Logo.png"
-     height="100" width="250"/>
-<nav>
-	<a href="/Home/Cart" class="float-right margin">Cart</a>
-	<a href="../Login/loginpage.html" class="float-right margin">Login</a>
-	<input type="text" name="search-bar" class="margin float-right search-bar">
-</nav>
-<ul class="nav nav-tabs">
-	<li class="active"><a href="Category1Page" class="c1">Crocs</a></li>
-	<li><a href="Category2Page" class="c2">Yeezys</a></li>
-	<li><a href="Category3Page" class="c3">Jordans</a></li>
-	<li><a href="Category4Page" class="c4">Accessories</a></li>
-</ul> -->
-<img src ="~/assets/MainPageImage.png" height="440"
-     width="1020"/>
+	<img class="main" src ="~/assets/MainPageImage.png" height="440"
+		 width="1020"/>
+
+	<h3 class="trending">Trending Now</h3>
+
+	<div class="shoes">
+	<div class = "small-container">  
+		<div class="row">  
+			<div class="column-2" id="spacing">
+				<img src="/assets/catalog-pics/yeezys/orangeyz.jpg"  width="270px" height="200px">
+				<h6>Orange Boost 350 V2 </h6>
+				<p>$188.00</p>
+				<form action="#" methods="post">
+					<input type='hidden' name="selectedProduct" value="8">
+					<button type="submit">Add to Cart</button>
+				</form>
+			</div>
+			<div class="column-2" id="spacing">
+				<img src="/assets/catalog-pics/jordans/jordans2.jpg"  width="270px" height="200px">
+				<h6>Air Jordan 1 Mid Grade School</h6>
+				<p>$898.00</p>
+				<form action="#" methods="post">
+					<input type='hidden' name="selectedProduct" value="11">
+					<button type="submit">Add to Cart</button>
+				</form>
+			</div>
+			<div class="column-2" id="spacing">
+				<img src="~/assets/catalog-pics/crocs/crocs1.jpg" width="270px" height="200px">
+				<h6> Aringa Mens Garden Clog</h6>
+				<p>$27.00</p>
+				<form action="#" methods="post">
+					<input type='hidden' name="selectedProduct" value="1">
+					<button type="submit">Add to Cart</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="limited">Limited Time</h3>
+<img class="jordan" src ="~/assets/MainPageImage.png" height="440"
+		 width="1020"/>
 </body>
 </html>
