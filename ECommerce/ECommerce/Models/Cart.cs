@@ -12,6 +12,7 @@ namespace ECommerce.Models
         public int CartId { get; set; }
         public int UserId { get; set; }
 
+        public virtual double? CartTotal { get; set; }
         public virtual User User { get; set; } = null!;
         public virtual ICollection<Cartproduct> Cartproducts { get; set; }
     }
