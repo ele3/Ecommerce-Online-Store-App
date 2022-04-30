@@ -11,28 +11,28 @@ namespace ECommerceUnitTests
         public void Crocs_Does_Not_Return_Null()
         {
             CatalogController testController = new CatalogController();
-            ViewResult result = testController.Crocs("1") as ViewResult;
+            ViewResult? result = testController.Crocs() as ViewResult;
             Assert.IsNotNull(result);
         }
         [TestMethod]
         public void Accessories_Does_Not_Return_Null()
         {
             CatalogController testController = new CatalogController();
-            ViewResult result = testController.Accessories("1") as ViewResult;
+            ViewResult? result = testController.Accessories() as ViewResult;
             Assert.IsNotNull(result);
         }
         [TestMethod]
         public void Jordans_Does_Not_Return_Null()
         {
             CatalogController testController = new CatalogController();
-            ViewResult result = testController.Jordans("1") as ViewResult;
+            ViewResult? result = testController.Jordans() as ViewResult;
             Assert.IsNotNull(result);
         }
         [TestMethod]
         public void Yeezys_Does_Not_Return_Null()
         {
             CatalogController testController = new CatalogController();
-            ViewResult result = testController.Yeezys("1") as ViewResult;
+            ViewResult? result = testController.Yeezys() as ViewResult;
             Assert.IsNotNull(result);
         }
     }
