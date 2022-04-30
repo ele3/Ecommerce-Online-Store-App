@@ -1,3 +1,4 @@
+![ECommerce Logo](https://cdn.discordapp.com/attachments/961351822092681276/962798017512087552/ECommerce_Logo.png)
 # CSCE361 E-Commerce Online Store Application
 Final Project for CSCE 361
 
