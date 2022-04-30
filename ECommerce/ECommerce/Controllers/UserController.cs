@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Net;
 using ECommerce.Data;
 using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,19 @@ namespace ECommerce.Controllers
     {
         private ECommerceContext db = new ECommerceContext();
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Login(string user, string password)
         {
             if (user != null && password != null)
@@ -31,6 +45,7 @@ namespace ECommerce.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Register(string firstName, string lastName, string user, string password, 
             string email, string country, string state, string city, string street, string zip)
         {
@@ -105,7 +120,7 @@ namespace ECommerce.Controllers
                 db.Emails.Add(newEmail);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("Login", "User");
         }
 
 
