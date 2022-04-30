@@ -35,7 +35,6 @@ namespace ECommerce.Controllers
         [HttpPost]
         public IActionResult Checkout(string cardholderName, string cardNumber, string month, string year, string cvv)
         {
-            Console.WriteLine(cardholderName);
             User userObject = null;
             if (HttpContext.Session.GetString("UserSession") != null)
             {
