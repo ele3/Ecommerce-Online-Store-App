@@ -15,59 +15,69 @@
   <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-  <div class="wrapper">
-	  <h1>SHOPPING CART</h1>
-	  <div class="cart">
-		  @{
-			  double? subtotalAmount = 0;
-			  double? totalAmount = 0;
-		  }
-		  <div class="item">
-			  @if (Model != null)
-			  {
-				  @foreach (var product in Model.Cartproducts)
-				  {
-					  <div class="content">
-						  <img src=@Url.Content(product.Product.ProductImage) width="200" height="200"/>
-						  <div class="information">
-							  <h2 class="name">@Html.DisplayName(product.Product.ProductName)</h2>
-							  <h3 class="cost">$@Html.DisplayFor(modelProduct => product.Product.ProductPrice)</h3>
-							  <p class="quantity">Quantity: <input value=@Html.DisplayFor(item => product.Quantity)></p>
-							  <a class="remove-button" asp-action="Delete" asp-route-id="@product.CartProductId">
-								  <i class="fa-solid fa-trash"></i>
-								  <span class="remove">Remove</span>
-							  </a>
-						  </div>
-					  </div>
-					  subtotalAmount +=
-					  product.Product.ProductPrice * product.Quantity;
-				  }
-			  }
-		  </div>
-		  <!--Total Amount Display-->
-		  <div class="right-sidebar">
-			  @{
+<div class="wrapper">
+	@if (Model != null)
+	{
+		<h1>SHOPPING CART</h1>
+	}
+	else
+	{
+		<h1>PLEASE LOGIN FIRST!</h1>
+	}
+	<div class="cart">
+		@{
+			double? subtotalAmount = 0;
+			double? totalAmount = 0;
+		}
+		<div class="item">
+			@if (Model != null)
+			{
+				@foreach (var product in Model.Cartproducts)
+				{
+					<div class="content">
+						<img src=@Url.Content(product.Product.ProductImage) width="200" height="200"/>
+						<div class="information">
+							<h2 class="name">@Html.DisplayName(product.Product.ProductName)</h2>
+							<h3 class="cost">$@Html.DisplayFor(modelProduct => product.Product.ProductPrice)</h3>
+							<p class="quantity">Quantity: <input value=@Html.DisplayFor(item => product.Quantity)></p>
+							<a class="remove-button" asp-action="Delete" asp-route-id="@product.CartProductId">
+								<i class="fa-solid fa-trash"></i>
+								<span class="remove">Remove</span>
+							</a>
+						</div>
+					</div>
+					subtotalAmount +=
+						product.Product.ProductPrice * product.Quantity;
+				}
+			}
+		</div>
+		<!--Total Amount Display-->
+		<div class="right-sidebar">
+			@{
 				totalAmount = subtotalAmount + 10.00;
-			  }
-			  <p>
-				  <span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => subtotalAmount)</span>
-			  </p>
-			  <p>
-				  <span>Discount</span><span> $5.00</span>
-			  </p>
-			  <p>
-				  <span>Shipping</span><span> $10.00</span>
-			  </p>
-			  <p>
-				  <span>Taxes</span><span> $5.00</span>
-			  </p>
-			  <hr>
-			  <p>
-				  <span>Total</span><span class="cartTotal">$@Html.DisplayFor(x => totalAmount)</span>
-			  </p>
-			  <a asp-area="" asp-controller="Checkout" asp-action="Checkout">Checkout</a>
-		  </div>
-	  </div>
-  </div>
+			}
+			@if (Model != null)
+			{
+				<p>
+					<span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => subtotalAmount)</span>
+				</p>
+				<p>
+					<span>Discount</span><span> $5.00</span>
+				</p>
+				<p>
+					<span>Shipping</span><span> $10.00</span>
+				</p>
+				<p>
+					<span>Taxes</span><span> $5.00</span>
+				</p>
+				<hr>
+				<p>
+					<span>Total</span><span class="cartTotal">$@Html.DisplayFor(x => totalAmount)</span>
+				</p>
+				<a asp-area="" asp-controller="Checkout" asp-action="Checkout">Checkout</a>
+			}
+		</div>
+	</div>
+</div>
 </body>
 </html>
