@@ -46,10 +46,7 @@
 	<div class="bottom-actions">
 		<form asp-action="Delete">
 			<input type="hidden" asp-for="CartProductId" />
-			<a class="delete-btn" name="delete-btn" type="submit" value="Delete">
-				<i class="fa-solid fa-trash"></i>
-				<span class="deleteSpan">Delete</span>
-			</a> |
+			<input type="submit" value="Delete" class="btn btn-danger"/> |
 			<a asp-action="Cart">Back to Cart</a>
 		</form>
 	</div>
