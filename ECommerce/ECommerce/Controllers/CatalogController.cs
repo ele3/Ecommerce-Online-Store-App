@@ -10,6 +10,32 @@ namespace ECommerce.Controllers
     public class CatalogController : Controller
     {
         private ECommerceContext db = new ECommerceContext();
+
+        [HttpGet]
+        public IActionResult Crocs()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Accessories()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Jordans()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Yeezys()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Crocs(string selectedProduct)
         {
             User userObject = null;
@@ -42,6 +68,8 @@ namespace ECommerce.Controllers
             }
             return View();
         }
+
+        [HttpPost]
         public IActionResult Accessories(string selectedProduct)
         {
             User userObject = null;
@@ -74,6 +102,8 @@ namespace ECommerce.Controllers
             }
             return View();
         }
+
+        [HttpPost]
         public IActionResult Jordans(string selectedProduct)
         {
             User userObject = null;
@@ -106,6 +136,8 @@ namespace ECommerce.Controllers
             }
             return View();
         }
+
+        [HttpPost]
         public IActionResult Yeezys(string selectedProduct)
         {
             User userObject = null;
