@@ -15,7 +15,8 @@
 <body>
 <div class = "register-form">
 	<h1>REGISTER</h1>
-	<form action="#" methods="post">
+	@using (Html.BeginForm("Register", "User"))
+	{
 		<p>First Name</p>
 		<input type="text" name="firstName" placeholder="First Name">
 		<p>Last Name</p>
@@ -38,7 +39,7 @@
 		<input type="text" name="zip" placeholder="Zip Code">
 		<button type="submit">Register</button>
 		<a class="login-return" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-	</form>
+	}
 </div>
 </body>
 </html>
