@@ -24,46 +24,51 @@
 				<img src="~/assets/catalog-pics/accessories/acc1.jpg"  width="190px" height="220px">
 				<h6> Grey Shoes Bag</h6>
 				<p>$38.00</p>
-				<form action="#" methods="post">
+				@using (Html.BeginForm("Accessories", "Catalog"))
+				{
 					<input type='hidden' name="selectedProduct" value="14">
 					<button type="submit">Add to Cart</button>
-				</form>
+				}
 			</div>
 			<div class="column-2">
 				<img src="/assets/catalog-pics/accessories/acc2.jpg"  width="165px" height="220px">
 				<h6>Foot Fitter</h6>
 				<p>$42.00</p>
-				<form action="#" methods="post">
+				@using (Html.BeginForm("Accessories", "Catalog"))
+				{
 					<input type='hidden' name="selectedProduct" value="15">
 					<button type="submit">Add to Cart</button>
-				</form>
+				}
 			</div>
 			<div class="column-2">
 				<img src="/assets/catalog-pics/accessories/acc3.jpg"  width="190px" height="220px">
 				<h6>Shoe Laces</h6>
 				<p>$9.00</p>
-				<form action="#" methods="post">
+				@using (Html.BeginForm("Accessories", "Catalog"))
+				{
 					<input type='hidden' name="selectedProduct" value="16">
 					<button type="submit">Add to Cart</button>
-				</form>
+				}
 			</div>
 			<div class="column-2">
 				<img src="/assets/catalog-pics/accessories/acc4.jpg"  width="180px" height="220px">
 				<h6>Lock Laces </h6>
 				<p>$15.00</p>
-				<form action="#" methods="post">
+				@using (Html.BeginForm("Accessories", "Catalog"))
+				{
 					<input type='hidden' name="selectedProduct" value="17">
 					<button type="submit">Add to Cart</button>
-				</form>
+				}
 			</div>
 			<div class="column-2">              
 				<img src ="/assets/catalog-pics/accessories/acc5.jpg" width="200px" height="210px">            
 				<h6> Epoxy Spiked Shoes</h6>
 				<p>$88.00</p>
-				<form action="#" methods="post">
+				@using (Html.BeginForm("Accessories", "Catalog"))
+				{
 					<input type='hidden' name="selectedProduct" value="18">
 					<button type="submit">Add to Cart</button>
-				</form>
+				}
 			</div>
 
 		</div>
