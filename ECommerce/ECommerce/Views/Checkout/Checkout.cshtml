@@ -20,41 +20,41 @@
   <div class="item-flex">
     <section class="checkout">
       <h2 class="payment-heading">PAYMENT DETAILS</h2>
-      <div class="payment-form">
+	    <div class="payment-form">
+			@using (Html.BeginForm("Checkout", "Checkout"))
+			{
+				<div class="cardholderName">
+					<label for="cardholderName" class="payment-input-label">Cardholder Name</label>
+				</div>
+				<input type="text" name="cardholderName" id="cardholderName" placeholder="CARDHOLDER NAME" class="payment-input">
 
-        <form action="#" methods="post">
-          <div class="cardholderName">
-            <label for="cardholderName" class="payment-input-label">Cardholder Name</label>
-          </div>
-          <input type="text" name="cardholderName" id="cardholderName" placeholder = "CARDHOLDER NAME" class="payment-input">
+				<div class="cardNumber">
+					<label for="cardNumber" class="payment-input-label">Card Number</label>
+				</div>
+				<input type="text" name="cardNumber" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" class="payment-input">
 
-          <div class="cardNumber">
-            <label for="cardNumber" class="payment-input-label">Card Number</label>
-          </div>
-          <input type="text" name="cardNumber" id="cardNumber" placeholder = "XXXX-XXXX-XXXX-XXXX" class="payment-input">
+				<div class="expiration">
+					<label for="expiration" class="payment-input-label">Expiration date</label>
+					<div class="input-flex">
+						<input type="number" name="month" id="expiration" placeholder="XX" min="1" max="12"
+						       class="payment-input">
+						/
+						<input type="number" name="year" id="expiration" placeholder="XX" min="22" max="99"
+						       class="payment-input">
+					</div>
+				</div>
 
-          <div class="expiration">
-            <label for="expiration" class="payment-input-label">Expiration date</label>
-            <div class="input-flex">
-              <input type="number" name="month" id="expiration" placeholder="XX" min="1" max="12"
-                class="payment-input">
-              /
-              <input type="number" name="year" id="expiration" placeholder="XX" min="22" max="99"
-                class="payment-input">
-            </div>
-          </div>
-
-          <div class="cvv">
-            <label for="cvv" class="payment-input-label">CVV</label>
-          </div>
-          <input type="number" name="cvv" id="cvv" class="payment-input" placeholder = "XXX" min="100" max="999">
-          <div class="pay-button">
-	          <button class="btn-pay" type="submit">
-		          <b>Pay</b>
-	          </button>
-          </div>
-        </form>
-      </div>
+				<div class="cvv">
+					<label for="cvv" class="payment-input-label">CVV</label>
+				</div>
+				<input type="number" name="cvv" id="cvv" class="payment-input" placeholder="XXX" min="100" max="999">
+				<div class="pay-button">
+					<button class="btn-pay" type="submit">
+						<b>Pay</b>
+					</button>
+				</div>
+			}
+	    </div>
 
     </section>
 
