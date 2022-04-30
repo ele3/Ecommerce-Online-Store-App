@@ -51,7 +51,6 @@ namespace ECommerce.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            Console.WriteLine("Entered");
             Cartproduct cartProductObject = await db.Cartproducts.FindAsync(id);
             db.Cartproducts.Remove(cartProductObject);
             await db.SaveChangesAsync();
