@@ -11,7 +11,7 @@ namespace ECommerceUnitTests
         public void Login_Does_Not_Return_Null()
         {
             UserController testController = new UserController();
-            ViewResult result = testController.Login("Username", "Password") as ViewResult;
+            ViewResult? result = testController.Login() as ViewResult;
             Assert.IsNotNull(result);
         }
 
@@ -19,9 +19,7 @@ namespace ECommerceUnitTests
         public void Register_Does_Not_Return_Null()
         {
             UserController testController = new UserController();
-            ViewResult result = testController.Register("firstName", "lastName", "Username",
-                "Password", "Email", "Country", "State", "City", 
-                "Street", "Zip") as ViewResult;
+            ViewResult? result = testController.Register() as ViewResult;
             Assert.IsNotNull(result);
         }
     }
