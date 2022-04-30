@@ -5,6 +5,11 @@ Final Project for CSCE 361
 ## Group Members:
 Eric Le, Harry Endrulat, Nathan Liew, Kyle Auman, Erica Fenn
 
+## Table of Contents
+- [Project Setup](#project-setup)
+- [Folders within the Project](#folders-within-the-project)
+- [Resources Utilized](#resources-utilized)
+
 ## Project Setup:
 - First, download the "onlineStoreDB.sql" file located in the "BackEnd/MySQL" folder, and run it in MySQL Workbench on a Local Server with your own local Database
 - Second, find "appsettings.json" located in the ECommerce project, and follow the template provided:
