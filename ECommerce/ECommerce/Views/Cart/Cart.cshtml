@@ -54,7 +54,7 @@
 		<!--Total Amount Display-->
 		<div class="right-sidebar">
 			@{
-				totalAmount = subtotalAmount + 10.00;
+				totalAmount = subtotalAmount;
 			}
 			@if (Model != null)
 			{
@@ -62,13 +62,13 @@
 					<span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => subtotalAmount)</span>
 				</p>
 				<p>
-					<span>Discount</span><span> $5.00</span>
+					<span>Discount</span><span> $0.00</span>
 				</p>
 				<p>
-					<span>Shipping</span><span> $10.00</span>
+					<span>Shipping</span><span> $0.00</span>
 				</p>
 				<p>
-					<span>Taxes</span><span> $5.00</span>
+					<span>Taxes</span><span> $0.00</span>
 				</p>
 				<hr>
 				<p>

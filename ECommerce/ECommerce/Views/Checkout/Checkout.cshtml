@@ -70,7 +70,7 @@
 			  {
 				  @foreach (var product in Model.Cartproducts)
 				  {
-					  subtotalAmount = product.Product.ProductPrice * product.Quantity;
+					  subtotalAmount += product.Product.ProductPrice * product.Quantity;
 					  <div class="product-card">
 						  <div class="card">
 							  <div class="img-box">
@@ -96,22 +96,22 @@
 		  <div class="wrapper">
 			  <div class="amount">
 				  @{
-					  totalAmount = subtotalAmount + 10.00;
+					  totalAmount = subtotalAmount;
 				  }
 				  <div class="subtotal">
 					  <span>Subtotal</span> <span>$ <span id="subtotal">@Html.DisplayFor(x => subtotalAmount)</span></span>
 				  </div>
 
 				  <div class="discount">
-					  <span>Discount</span> <span>$ <span id="discount">5.00</span></span>
+					  <span>Discount</span> <span>$ <span id="discount">0.00</span></span>
 				  </div>
 
 				  <div class="shipping">
-					  <span>Shipping</span> <span>$ <span id="shipping">10.00</span></span>
+					  <span>Shipping</span> <span>$ <span id="shipping">0.00</span></span>
 				  </div>
 
 				  <div class="tax">
-					  <span>Tax</span> <span>$ <span id="tax">5.00</span></span>
+					  <span>Tax</span> <span>$ <span id="tax">0.00</span></span>
 				  </div>
 
 				  <hr>
