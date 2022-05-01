@@ -22,7 +22,7 @@ Eric Le, Harry Endrulat, Nathan Liew, Kyle Auman, Erica Fenn
 ## Folders within the Project
 
 ### BackEnd/MySQL
-This folder contains the sql file consisting of tables and queries necessary to populate the local database.
+This folder contains the sql file consisting of tables and queries necessary to populate the local database. Additionally, the folder contains a UML Diagram of our ECommerce Database.
 
 ### FrontEnd
 This folder can be ignored. The folder was generally used to store our static webpages (HTML & CSS) in the intial stages of working on the E-Commerce Online Store Application. All of our FrontEnd entities can be found in the "View" folder in the ECommerce project.
