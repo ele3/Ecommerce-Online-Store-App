@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using ECommerce.Data;
+﻿using ECommerce.Data;
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.Models;
 using Microsoft.EntityFrameworkCore;
