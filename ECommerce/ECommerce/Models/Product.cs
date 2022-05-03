@@ -7,6 +7,7 @@ namespace ECommerce.Models
         public Product()
         {
             Cartproducts = new HashSet<Cartproduct>();
+            Sales = new HashSet<Sale>();
         }
 
         public int ProductId { get; set; }
@@ -24,5 +25,6 @@ namespace ECommerce.Models
         public virtual Category Category { get; set; } = null!;
         public virtual Manufacturer Manufacturer { get; set; } = null!;
         public virtual ICollection<Cartproduct> Cartproducts { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace ECommerce.Data
             : base(options)
         {
         }
-
         public virtual DbSet<Address> Addresses { get; set; } = null!;
         public virtual DbSet<Card> Cards { get; set; } = null!;
         public virtual DbSet<Cart> Carts { get; set; } = null!;
@@ -28,6 +27,7 @@ namespace ECommerce.Data
         public virtual DbSet<Email> Emails { get; set; } = null!;
         public virtual DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
+        public virtual DbSet<Sale> Sales { get; set; } = null!;
         public virtual DbSet<State> States { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -254,6 +254,45 @@ namespace ECommerce.Data
                     .HasForeignKey(d => d.ManufacturerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("product_ibfk_1");
+            });
+
+            modelBuilder.Entity<Sale>(entity =>
+            {
+                entity.ToTable("sale");
+
+                entity.HasIndex(e => e.CategoryId, "categoryId");
+
+                entity.HasIndex(e => e.ProductId, "productId");
+
+                entity.Property(e => e.SaleId).HasColumnName("saleId");
+
+                entity.Property(e => e.CategoryId).HasColumnName("categoryId");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.SaleEnd)
+                    .HasColumnType("datetime")
+                    .HasColumnName("saleEnd");
+
+                entity.Property(e => e.SaleName)
+                    .HasMaxLength(255)
+                    .HasColumnName("saleName");
+
+                entity.Property(e => e.SalePercentDiscount).HasColumnName("salePercentDiscount");
+
+                entity.Property(e => e.SaleStart)
+                    .HasColumnType("datetime")
+                    .HasColumnName("saleStart");
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.CategoryId)
+                    .HasConstraintName("sale_ibfk_1");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("sale_ibfk_2");
             });
 
             modelBuilder.Entity<State>(entity =>

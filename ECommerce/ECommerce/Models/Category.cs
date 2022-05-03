@@ -7,11 +7,13 @@ namespace ECommerce.Models
         public Category()
         {
             Products = new HashSet<Product>();
+            Sales = new HashSet<Sale>();
         }
 
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = null!;
 
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }
