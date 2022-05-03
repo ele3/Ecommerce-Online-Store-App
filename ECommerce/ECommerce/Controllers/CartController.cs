@@ -1,4 +1,5 @@
-﻿using ECommerce.Data;
+﻿using System.Dynamic;
+using ECommerce.Data;
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.Models;
 using Microsoft.EntityFrameworkCore;
@@ -6,12 +7,19 @@ using Newtonsoft.Json;
 
 namespace ECommerce.Controllers
 {
+    public class ViewModel
+    {
+        public Cart? Cart { get; set; }
+        public IEnumerable<Sale>? Sales { get; set; }
+    }
     public class CartController : Controller
     {
         private ECommerceContext db = new ECommerceContext();
         public IActionResult Cart()
         {
             User userObject = null;
+            ViewModel modelObject = new ViewModel();
+            HashSet<Sale> saleList = new HashSet<Sale>();
             if (HttpContext.Session.GetString("UserSession") != null)
             {
                 userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
@@ -24,9 +32,22 @@ namespace ECommerce.Controllers
                 {
                     Product placeholderProduct = db.Products.Find(cartProductObject.ProductId);
                     cartProductObject.Product = placeholderProduct;
+                    Sale? saleObject = db.Sales.Where(x => x.CategoryId == placeholderProduct.CategoryId).SingleOrDefault();
+                    if (saleObject != null)
+                    {
+                        saleList.Add(saleObject);
+                    }
                 }
 
-                return View(cartObject);
+                if (saleList.Count != 0)
+                {
+                    modelObject.Cart = cartObject;
+                    modelObject.Sales = saleList;
+                    return View(modelObject);
+                }
+
+                modelObject.Cart = cartObject;
+                return View(modelObject);
             }
             return View();
         }
