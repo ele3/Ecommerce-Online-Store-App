@@ -1,4 +1,4 @@
-﻿@model ECommerce.Controllers.CheckoutController.ViewModel
+﻿@model CartDetail
 @{
 	ViewData["Title"] = "Checkout";
 }
@@ -59,20 +59,6 @@
     </section>
 
 	  <section class="cart">
-		  @{
-			  double? subtotalAmount = 0;
-			  double? discountPercentage = 0;
-			  double? discountAmount = 0;
-			  double? totalAmount = 0;
-			  double? tax = 0;
-			  if (Model != null && Model.Sales != null)
-			  {
-				  foreach (var sale in Model.Sales)
-				  {
-					  discountPercentage += sale.SalePercentDiscount;
-				  }
-			  }
-		  }
 		  <div class="right-cart-box">
 			  <h2 class="payment-heading">Cart Checkout</h2>
 
@@ -80,7 +66,6 @@
 			  {
 				  @foreach (var product in Model.Cart.Cartproducts)
 				  {
-					  subtotalAmount += product.Product.ProductPrice * product.Quantity;
 					  <div class="product-card">
 						  <div class="card">
 							  <div class="img-box">
@@ -105,19 +90,12 @@
 		  </div>
 		  <div class="wrapper">
 			  <div class="amount">
-				  @{
-					  discountAmount = Math.Round((double)subtotalAmount * (double)discountPercentage, 2);
-					  totalAmount = subtotalAmount - discountAmount;
-					  tax = Math.Round((double)totalAmount * 0.05, 2);
-					  totalAmount += tax;
-					  discountPercentage *= 100;
-				  }
 				  <div class="subtotal">
-					  <span>Subtotal</span> <span>$ <span id="subtotal">@Html.DisplayFor(x => subtotalAmount)</span></span>
+					  <span>Subtotal</span> <span>$ <span id="subtotal">@Html.DisplayFor(x => x.SubtotalAmount)</span></span>
 				  </div>
 
 				  <div class="discount">
-					  <span>Discount(@Html.DisplayFor(x => discountPercentage)%)</span> <span>$ <span id="discount">@Html.DisplayFor(x => discountAmount)</span></span>
+					  <span>Discount(@Html.DisplayFor(x => x.DiscountPercentage)%)</span> <span>$ <span id="discount">@Html.DisplayFor(x => x.DiscountAmount)</span></span>
 				  </div>
 
 				  <div class="shipping">
@@ -125,13 +103,13 @@
 				  </div>
 
 				  <div class="tax">
-					  <span>Tax</span> <span>$ <span id="tax">@Html.DisplayFor(x => tax)</span></span>
+					  <span>Tax</span> <span>$ <span id="tax">@Html.DisplayFor(x => x.Tax)</span></span>
 				  </div>
 
 				  <hr>
 
 				  <div class="total">
-					  <span>Total</span> <span>$ <span id="total">@Html.DisplayFor(x => totalAmount)</span></span>
+					  <span>Total</span> <span>$ <span id="total">@Html.DisplayFor(x => x.TotalAmount)</span></span>
 				  </div>
 
 			  </div>
