@@ -1,7 +1,7 @@
-
--- use 'your local db name'; 
-
+-- use 'your local db name';
+use ECommerce;
 drop table if exists CartProduct;
+drop table if exists Sale;
 drop table if exists Product;
 drop table if exists Cart;
 drop table if exists Category;
@@ -69,7 +69,7 @@ create table Manufacturer (
     manufacturerName varchar(255) not null
 );
 
-# This table respresents a Category and has a one to many relationship with the Product table
+
 create table Category (
 	categoryId int not null primary key auto_increment,
     categoryName varchar(255) not null
@@ -98,6 +98,19 @@ create table Product (
     foreign key (manufacturerId) references Manufacturer(manufacturerId),
     foreign key (categoryId) references Category(categoryId)
 );
+
+create table Sale(
+	saleId int not null primary key auto_increment,
+    saleName varchar(255) not null,
+    salePercentDiscount int not null,
+    saleStart datetime not null,
+    saleEnd datetime not null,
+    categoryId int,
+    productId int,
+    foreign key (categoryId) references Category(categoryId),
+    foreign key (productId) references Product(productId)
+);
+
 -- a checkout is created from CartProduct whenever a user moves to the checkout page
 -- and is deleted apon leaving the page.
 create table CartProduct(
@@ -197,6 +210,9 @@ values ('Aringa Mens Garden Clog',1,'~/assets/catalog-pics/crocs/crocs1.jpg','Kh
 ('Shoe Laces',4,'~/assets/catalog-pics/accessories/acc3.jpg','White, Black, Grey, and Brown',27,0.5,0.1,4.6,9,4),
 ('Lock Laces',4,'~/assets/catalog-pics/accessories/acc4.jpg','Silver and Black',28,0.2,0.3,4.9,15,4),
 ('Epoxy Spiked Shoes',4,'~/assets/catalog-pics/accessories/acc5.jpg','Green and Silver',14.8,10,3.2,0.1,88,4);
+
+insert into Sale(saleName, salePercentDiscount, saleStart, saleEnd, categoryId)
+values('The amazing Crocs sale!', 15, '2022-04-20 00:00:00', '2022-05-10 23:59:59', 1);
 
 insert into Cart (userId)
 values(1),
