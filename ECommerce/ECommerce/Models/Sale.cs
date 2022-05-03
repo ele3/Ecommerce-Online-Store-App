@@ -7,7 +7,7 @@ namespace ECommerce.Models
     {
         public int SaleId { get; set; }
         public string SaleName { get; set; } = null!;
-        public int SalePercentDiscount { get; set; }
+        public double? SalePercentDiscount { get; set; }
         public DateTime SaleStart { get; set; }
         public DateTime SaleEnd { get; set; }
         public int? CategoryId { get; set; }

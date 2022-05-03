@@ -102,7 +102,7 @@ create table Product (
 create table Sale(
 	saleId int not null primary key auto_increment,
     saleName varchar(255) not null,
-    salePercentDiscount int not null,
+    salePercentDiscount double not null,
     saleStart datetime not null,
     saleEnd datetime not null,
     categoryId int,
@@ -212,7 +212,7 @@ values ('Aringa Mens Garden Clog',1,'~/assets/catalog-pics/crocs/crocs1.jpg','Kh
 ('Epoxy Spiked Shoes',4,'~/assets/catalog-pics/accessories/acc5.jpg','Green and Silver',14.8,10,3.2,0.1,88,4);
 
 insert into Sale(saleName, salePercentDiscount, saleStart, saleEnd, categoryId)
-values('The amazing Crocs sale!', 15, '2022-04-20 00:00:00', '2022-05-10 23:59:59', 1);
+values('The amazing Crocs sale!', 0.15, '2022-04-20 00:00:00', '2022-05-10 23:59:59', 1);
 
 insert into Cart (userId)
 values(1),
