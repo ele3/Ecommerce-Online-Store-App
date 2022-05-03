@@ -1,4 +1,4 @@
-@model ECommerce.Controllers.ViewModel
+@model CartDetail
 @{
 	ViewData["Title"] = "Cart";
 }
@@ -25,20 +25,6 @@
 		<h1>PLEASE LOGIN FIRST!</h1>
 	}
 	<div class="cart">
-		@{
-			double? subtotalAmount = 0;
-			double? discountPercentage = 0;
-			double? discountAmount = 0;
-			double? totalAmount = 0;
-			double? tax = 0;
-			if (Model != null && Model.Sales != null)
-			{
-				foreach (var sale in Model.Sales)
-				{
-					discountPercentage += sale.SalePercentDiscount;
-				}
-			}
-		}
 		<div class="item">
 			@if (Model != null)
 			{
@@ -56,37 +42,28 @@
 							</a>
 						</div>
 					</div>
-					subtotalAmount +=
-						product.Product.ProductPrice * product.Quantity;
 				}
 			}
 		</div>
 		<!--Total Amount Display-->
 		<div class="right-sidebar">
-			@{
-				discountAmount = Math.Round((double)subtotalAmount * (double)discountPercentage, 2);
-				totalAmount = subtotalAmount - discountAmount;
-				tax = Math.Round((double)totalAmount * 0.05, 2);
-				totalAmount += tax;
-				discountPercentage *= 100;
-			}
 			@if (Model != null)
 			{
 				<p>
-					<span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => subtotalAmount)</span>
+					<span>Subtotal</span><span class="subTotal">$@Html.DisplayFor(x => x.SubtotalAmount)</span>
 				</p>
 				<p>
-					<span>Discount(@Html.DisplayFor(x=>discountPercentage)%)</span><span> $@Html.DisplayFor(x => discountAmount)</span>
+					<span>Discount(@Html.DisplayFor(x=>x.DiscountPercentage)%)</span><span> $@Html.DisplayFor(x => x.DiscountAmount)</span>
 				</p>
 				<p>
 					<span>Shipping</span><span> $0.00</span>
 				</p>
 				<p>
-					<span>Taxes</span><span> @Html.DisplayFor(x => tax)</span>
+					<span>Taxes</span><span> $@Html.DisplayFor(x => x.Tax)</span>
 				</p>
 				<hr>
 				<p>
-					<span>Total</span><span class="cartTotal">$@Html.DisplayFor(x => totalAmount)</span>
+					<span>Total</span><span class="cartTotal">$@Html.DisplayFor(x => x.TotalAmount)</span>
 				</p>
 				<a asp-area="" asp-controller="Checkout" asp-action="Checkout">Checkout</a>
 			}
