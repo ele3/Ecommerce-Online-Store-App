@@ -40,25 +40,8 @@ namespace ECommerce.Controllers
             if (selectedProduct != null && HttpContext.Session.GetString("UserSession") != null)
             {
                 User userObject = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
-                int selectedProductId = int.Parse(selectedProduct);
                 CatalogController catalogController = new CatalogController();
-                Cart userCart = catalogController.CheckCart(userObject);
-
-                // Increments the Quantity if the Cart Product has been found
-                Cartproduct findCartproduct = catalogController.CheckCartproduct(selectedProductId, userCart);
-                if (findCartproduct != null)
-                {
-                    db.Cartproducts.Find(findCartproduct.CartProductId).Quantity += 1;
-                    db.SaveChanges();
-                    return RedirectToAction("Cart", "Cart");
-                }
-
-                Cartproduct cartProductObject = new Cartproduct();
-                cartProductObject.CartId = userCart.CartId;
-                cartProductObject.ProductId = selectedProductId;
-                cartProductObject.Quantity = 1;
-                db.Cartproducts.Add(cartProductObject);
-                db.SaveChanges();
+                catalogController.AddToCart(selectedProduct, userObject);
                 return RedirectToAction("Cart", "Cart");
             }
             return View();
