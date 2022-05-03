@@ -1,4 +1,4 @@
-﻿@model Cart
+﻿@model ECommerce.Controllers.CheckoutController.ViewModel
 @{
 	ViewData["Title"] = "Checkout";
 }
@@ -61,14 +61,24 @@
 	  <section class="cart">
 		  @{
 			  double? subtotalAmount = 0;
+			  double? discountPercentage = 0;
+			  double? discountAmount = 0;
 			  double? totalAmount = 0;
+			  double? tax = 0;
+			  if (Model != null && Model.Sales != null)
+			  {
+				  foreach (var sale in Model.Sales)
+				  {
+					  discountPercentage += sale.SalePercentDiscount;
+				  }
+			  }
 		  }
 		  <div class="right-cart-box">
 			  <h2 class="payment-heading">Cart Checkout</h2>
 
 			  @if (Model != null)
 			  {
-				  @foreach (var product in Model.Cartproducts)
+				  @foreach (var product in Model.Cart.Cartproducts)
 				  {
 					  subtotalAmount += product.Product.ProductPrice * product.Quantity;
 					  <div class="product-card">
@@ -96,14 +106,18 @@
 		  <div class="wrapper">
 			  <div class="amount">
 				  @{
-					  totalAmount = subtotalAmount;
+					  discountAmount = Math.Round((double)subtotalAmount * (double)discountPercentage, 2);
+					  totalAmount = subtotalAmount - discountAmount;
+					  tax = Math.Round((double)totalAmount * 0.05, 2);
+					  totalAmount += tax;
+					  discountPercentage *= 100;
 				  }
 				  <div class="subtotal">
 					  <span>Subtotal</span> <span>$ <span id="subtotal">@Html.DisplayFor(x => subtotalAmount)</span></span>
 				  </div>
 
 				  <div class="discount">
-					  <span>Discount</span> <span>$ <span id="discount">0.00</span></span>
+					  <span>Discount(@Html.DisplayFor(x => discountPercentage)%)</span> <span>$ <span id="discount">@Html.DisplayFor(x => discountAmount)</span></span>
 				  </div>
 
 				  <div class="shipping">
@@ -111,7 +125,7 @@
 				  </div>
 
 				  <div class="tax">
-					  <span>Tax</span> <span>$ <span id="tax">0.00</span></span>
+					  <span>Tax</span> <span>$ <span id="tax">@Html.DisplayFor(x => tax)</span></span>
 				  </div>
 
 				  <hr>
