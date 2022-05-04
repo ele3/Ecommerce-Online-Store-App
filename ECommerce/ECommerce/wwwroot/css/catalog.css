@@ -2,6 +2,29 @@
     margin: 200px 0;
 }
 
+.sale-title {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    background-color: darkred;
+    color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+}
+
+.category-title {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    background-color: #15876C;
+    color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+}
+
+.title {
+    margin-bottom: -100px;
+}
 
 .column {
     float: left;
@@ -38,7 +61,6 @@
   * {
   box-sizing: border-box;
 }
-
 
 .small-container{
     max-width: 1080px;
