@@ -2,6 +2,17 @@ body {
   background-color: #ddfff7;
 }
 
+.welcome-message {
+    margin: auto;
+    width: 50%;
+    margin-bottom: -75px;
+    background-color: #15876C;
+    color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+    text-align: center;
+}
+
 a:hover {
   color : black;
 }
@@ -17,6 +28,16 @@ a:hover {
 .main {
     margin-left: 150px;
     margin-top: 100px;
+    box-shadow: 7.5px 7.5px black;
+    margin-bottom: -75px;
+}
+
+.main:hover {
+    border: 1px solid rgb(0, 0, 0);
+    transform: scale(1.05);
+    border-radius: 10px;
+    opacity: 0.75;
+    transition: all .25s ease;
 }
 
 * {
@@ -24,8 +45,13 @@ a:hover {
 }
 
 .trending {
-   margin-left :125px;
-   margin-top: 150px;
+    margin-left: 125px;
+    margin-top: 150px;
+    background-color: #15876C;
+    color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+    text-align: center;
 }
 
 .shoes {
@@ -39,6 +65,11 @@ a:hover {
 .limited {
     margin-left: 125px;
     margin-top: 200px;
+    background-color: #15876C;
+    color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+    text-align: center;
 }
 
 .jordan {
