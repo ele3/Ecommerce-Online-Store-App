@@ -52,9 +52,6 @@ namespace ECommerce.Controllers
             HashSet<Sale> saleList = new HashSet<Sale>();
             double? subtotalAmount = 0;
             double? discountPercentage = 0;
-            double? discountAmount = 0;
-            double? totalAmount = 0;
-            double? tax = 0;
 
             Cart cartObject = db.Carts.Include(x => x.Cartproducts).Where(x => x.UserId == userObject.UserId).SingleOrDefault();
             foreach (var cartProductObject in cartObject.Cartproducts)
@@ -81,9 +78,24 @@ namespace ECommerce.Controllers
             }
 
             modelObject.Cart = cartObject;
-            discountAmount = Math.Round((double)subtotalAmount * (double)discountPercentage, 2);
-            totalAmount = subtotalAmount - discountAmount;
-            tax = Math.Round((double)totalAmount * 0.05, 2);
+
+            CartDetail calculateAmounts = CalculateAmounts(subtotalAmount, discountPercentage);
+
+            modelObject.DiscountAmount = calculateAmounts.DiscountAmount;
+            modelObject.TotalAmount = calculateAmounts.TotalAmount;
+            modelObject.Tax = calculateAmounts.Tax;
+            modelObject.SubtotalAmount = subtotalAmount;
+            modelObject.DiscountPercentage = discountPercentage;
+
+            return modelObject;
+        }
+
+        public CartDetail CalculateAmounts(double? subtotalAmount, double? discountPercentage)
+        {
+            CartDetail modelObject = new CartDetail();
+            double? discountAmount = Math.Round((double)subtotalAmount * (double)discountPercentage, 2);
+            double? totalAmount = subtotalAmount - discountAmount;
+            double? tax = Math.Round((double)totalAmount * 0.05, 2);
             totalAmount += tax;
             totalAmount = Math.Round((double)totalAmount, 2);
             discountPercentage *= 100;
