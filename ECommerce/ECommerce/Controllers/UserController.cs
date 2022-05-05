@@ -33,9 +33,6 @@ namespace ECommerce.Controllers
                 {
                     HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(userObject));
 
-                    // This here below is how you call the Session Object
-                    User testUser = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
-
                     return RedirectToAction("MainPage", "Home");
                 }
             }
