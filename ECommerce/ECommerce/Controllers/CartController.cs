@@ -84,8 +84,8 @@ namespace ECommerce.Controllers
             modelObject.DiscountAmount = calculateAmounts.DiscountAmount;
             modelObject.TotalAmount = calculateAmounts.TotalAmount;
             modelObject.Tax = calculateAmounts.Tax;
-            modelObject.SubtotalAmount = subtotalAmount;
-            modelObject.DiscountPercentage = discountPercentage;
+            modelObject.SubtotalAmount = calculateAmounts.SubtotalAmount;
+            modelObject.DiscountPercentage = calculateAmounts.DiscountPercentage;
 
             return modelObject;
         }
