@@ -8,6 +8,7 @@ Eric Le, Harry Endrulat, Nathan Liew, Kyle Auman, Erica Fenn
 ## Table of Contents
 - [Project Setup](#project-setup)
 - [Folders within the Project](#folders-within-the-project)
+- [External Packages/Libraries](#external-packageslibraries)
 - [Resources Utilized](#resources-utilized)
 
 ## Project Setup:
@@ -31,6 +32,16 @@ This folder can be ignored. The folder was generally used to store our static we
 This folder contains the main project where it has:
 - ECommerce: The actual project itself containing the entirety of our Model-View-Controller architecture, assets, and connection to the Database. Overall the bulk of the whole project.
 - ECommerceUnitTests: This contains the Unit Tests for our controllers utilized in our project.
+
+## External Packages/Libraries
+- Microsoft.EntityFrameworkCore
+    - Utilized a Database-First Approach to create domain and context classes
+    - Created instances of the context class within our controllers in order to access the data stored in the database
+- Pomelo.EntityFrameworkCore.MySql
+    - Used to configure the context to connect to a MySql compatible database
+- Newtonsoft.Json
+    - We utilized this JSON framework for .NET in order to serialize and deserialize a User object within our Session
+    - A Login would serialize the User object in the Session, and therefore, any web page can reference the session by deserializing the User object.
 
 ## Resources Utilized
 For the majority, YouTube was our main source of information to learn about how to design and implement our MVC Architecture in regards to creating the Models, Views, Controllers, and how to connect everything together such as utilizing a connection string.
