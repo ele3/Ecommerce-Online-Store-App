@@ -1,6 +1,6 @@
 ![ECommerce Logo](https://cdn.discordapp.com/attachments/961351822092681276/962798017512087552/ECommerce_Logo.png)
 # CSCE361 E-Commerce Online Store Application
-Final Project for CSCE 361
+Final Project for UNL Software Engineering Course
 
 ## Group Members:
 Eric Le, Harry Endrulat, Nathan Liew, Kyle Auman, Erica Fenn
